@@ -1,0 +1,49 @@
+@import "./corporate-design-system.css";
+@import "./portal-center.css";
+@import "./auth-modals.css";
+@import "./employee-dashboard.css";
+@import "./profile-settings.css";
+@import "./apply-leave.css";
+@import "./attendance-view.css";
+@import "./salary-slips.css";
+@import "./performance.css";
+@import "./notifications.css";
+@import "./ui-enhancements.css";
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+.doc-card {
+  transition: all 0.3s ease;
+}
+
+.doc-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.doc-type-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.doc-type-contract { background: #dcfce7; color: #166534; }
+.doc-type-policy { background: #dbeafe; color: #1e40af; }
+.doc-type-certificate { background: #fef3c7; color: #92400e; }
+.doc-type-id { background: #f3e8ff; color: #6b21a8; }
+.doc-type-payslip { background: #fce7f3; color: #9f1239; }
+.doc-status-verified { background: #dcfce7; color: #166534; }
+.doc-status-pending { background: #fef3c7; color: #92400e; }
+.doc-status-expired { background: #fee2e2; color: #991b1b; }

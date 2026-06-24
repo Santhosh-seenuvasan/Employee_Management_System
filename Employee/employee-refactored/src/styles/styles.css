@@ -1,0 +1,584 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+
+:root {
+
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+
+    --surface: #faf8ff;
+    --surface-container: #ffffff;
+
+    --surface-hover: #f8fafc;
+
+    --on-surface: #191b23;
+    --outline: #e2e8f0;
+
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #dc2626;
+
+    --shadow-sm: 0 2px 6px rgba(15, 23, 42, 0.04);
+    --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+    --shadow-lg: 0 10px 24px rgba(15, 23, 42, 0.12);
+
+    --radius-sm: 10px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+
+    --transition: all 0.25s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--surface);
+    color: var(--on-surface);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+body.dark-mode,
+body.ems-dark {
+    background: #0f172a;
+    color: #e2e8f0;
+    color-scheme: dark;
+}
+
+body.dark-mode .sidebar,
+body.ems-dark .sidebar {
+    background: rgba(15, 23, 42, 0.96);
+    color: #e2e8f0;
+    border-right-color: #334155;
+}
+
+body.dark-mode .main-content,
+body.ems-dark .main-content {
+    background: #0f172a;
+    color: #e2e8f0;
+}
+
+body.dark-mode .card,
+body.dark-mode .table-container,
+body.dark-mode .bg-white,
+body.ems-dark .card,
+body.ems-dark .table-container,
+body.ems-dark .bg-white {
+    background: #111827 !important;
+    color: #e2e8f0;
+    border-color: #334155 !important;
+}
+
+body.dark-mode .bg-slate-50,
+body.dark-mode .bg-slate-100,
+body.dark-mode .bg-slate-200,
+body.ems-dark .bg-slate-50,
+body.ems-dark .bg-slate-100,
+body.ems-dark .bg-slate-200 {
+    background-color: #111827 !important;
+}
+
+body.dark-mode .text-slate-900,
+body.dark-mode .text-slate-800,
+body.dark-mode .text-slate-700,
+body.dark-mode .text-slate-600,
+body.dark-mode .text-slate-500,
+body.ems-dark .text-slate-900,
+body.ems-dark .text-slate-800,
+body.ems-dark .text-slate-700,
+body.ems-dark .text-slate-600,
+body.ems-dark .text-slate-500 {
+    color: #cbd5e1 !important;
+}
+
+body.dark-mode .text-slate-400,
+body.ems-dark .text-slate-400 {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .border-slate-100,
+body.dark-mode .border-slate-200,
+body.dark-mode .border-slate-300,
+body.ems-dark .border-slate-100,
+body.ems-dark .border-slate-200,
+body.ems-dark .border-slate-300 {
+    border-color: #334155 !important;
+}
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select,
+body.ems-dark input,
+body.ems-dark textarea,
+body.ems-dark select {
+    background: #0f172a;
+    color: #e2e8f0;
+    border-color: #334155;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder,
+body.ems-dark input::placeholder,
+body.ems-dark textarea::placeholder {
+    color: #94a3b8;
+}
+
+body.dark-mode table thead,
+body.ems-dark table thead {
+    background: #0f172a;
+}
+
+body.dark-mode tbody tr:hover,
+body.ems-dark tbody tr:hover {
+    background: #1e293b;
+}
+
+body.dark-mode .logout-btn:hover,
+body.ems-dark .logout-btn:hover {
+    background: rgba(220, 38, 38, 0.14) !important;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Material Icons */
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24;
+}
+
+.profile-menu a.active,
+.settings-menu a.active {
+    background: #2563eb;
+    color: #ffffff !important;
+    font-weight: 600;
+    box-shadow: inset 3px 0 0 #1d4ed8;
+}
+
+.profile-menu a.active .material-symbols-outlined,
+.settings-menu a.active .material-symbols-outlined {
+    color: #ffffff !important;
+}
+
+.profile-menu a:focus-visible,
+.settings-menu a:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+}
+
+.ems-notification-panel {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 24px;
+    box-shadow: 0 24px 64px rgba(15, 23, 42, 0.18);
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: min(80vh, 640px);
+    overflow: hidden;
+}
+
+.ems-notification-panel__header,
+.ems-notification-panel__meta,
+.ems-notification-panel__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.ems-notification-panel__eyebrow {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #64748b;
+}
+
+.ems-notification-panel__title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.ems-notification-panel__close,
+.ems-notification-panel__refresh,
+.ems-notification-panel__view-all,
+.ems-notification-item__actions button {
+    border: 1px solid #dbe4f0;
+    background: #ffffff;
+    color: #1d4ed8;
+    border-radius: 999px;
+    padding: 8px 12px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+}
+
+.ems-notification-panel__close:hover,
+.ems-notification-panel__refresh:hover,
+.ems-notification-panel__view-all:hover,
+.ems-notification-item__actions button:hover {
+    background: #eff6ff;
+    border-color: #bfdbfe;
+}
+
+.ems-notification-panel__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: #eff6ff;
+    color: #1d4ed8;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.ems-notification-panel__body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow: auto;
+    padding-right: 4px;
+}
+
+.ems-notification-item {
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    padding: 14px;
+    background: #f8fafc;
+}
+
+.ems-notification-item.unread {
+    background: linear-gradient(180deg, #eff6ff, #ffffff);
+    border-color: #bfdbfe;
+}
+
+.ems-notification-item__top {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.ems-notification-item__title {
+    font-size: 14px;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.ems-notification-item__meta,
+.ems-notification-item__time,
+.ems-notification-item__message {
+    color: #64748b;
+    font-size: 12px;
+}
+
+.ems-notification-item__message {
+    margin-top: 8px;
+    line-height: 1.5;
+}
+
+.ems-notification-item__actions {
+    margin-top: 12px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.ems-notification-empty {
+    padding: 18px;
+    border: 1px dashed #cbd5e1;
+    border-radius: 18px;
+    color: #64748b;
+    background: #ffffff;
+}
+
+.ems-notification-button-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    border-radius: 999px;
+    background: #dc2626;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 800;
+    line-height: 18px;
+    text-align: center;
+    box-shadow: 0 0 0 2px #ffffff;
+}
+
+/* Notification dropdown positioning fixes - prevent layout shifts */
+#notificationDropdown,
+.ems-notification-panel {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+    max-width: 380px;
+}
+
+#notificationDropdown.show,
+#notificationDropdown:not(.hidden),
+.ems-notification-panel.show,
+.ems-notification-panel:not([hidden]) {
+    pointer-events: auto;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#notificationDropdown.hidden,
+.ems-notification-panel[hidden] {
+    display: none !important;
+    pointer-events: none;
+}
+
+/* Ensure notification wrapper doesn't affect layout */
+.ems-notification-wrap,
+.relative:has(#notificationDropdown) {
+    position: relative;
+    display: inline-block;
+}
+
+/* Settings button removal - hide any standalone settings icons in header */
+header button[aria-label="Settings"],
+header #emsSettingsBtn {
+    display: none !important;
+}
+
+/* Header */
+header {
+    height: 80px !important;
+    padding: 16px 32px !important;
+}
+
+/* Header stays on top */
+header {
+    z-index: 50 !important;
+}
+
+/* Profile and notification dropdowns - above header */
+#profileDropdown {
+    z-index: 51 !important;
+}
+
+#notificationDropdown {
+    z-index: 51 !important;
+}
+
+.profile-menu {
+    z-index: 51 !important;
+}
+/* Generic Cards */
+.card {
+
+    background: white;
+
+    border: 1px solid var(--outline);
+
+    border-radius: var(--radius-lg);
+
+    padding: 24px;
+
+    box-shadow: var(--shadow-sm);
+
+    transition: var(--transition);
+}
+
+.card:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow: var(--shadow-md);
+}
+
+/* Buttons */
+.btn-primary {
+
+    background: var(--primary);
+
+    color: white;
+
+    border: none;
+
+    padding: 12px 18px;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    font-weight: 600;
+
+    transition: var(--transition);
+}
+
+.btn-primary:hover {
+
+    background: var(--primary-dark);
+
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+
+    background: white;
+
+    border: 1px solid var(--outline);
+
+    color: #475569;
+
+    padding: 12px 18px;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    transition: var(--transition);
+}
+
+.btn-secondary:hover {
+
+    background: #f8fafc;
+}
+
+/* Tables */
+.table-container {
+
+    background: white;
+
+    border-radius: var(--radius-lg);
+
+    overflow: hidden;
+
+    border: 1px solid var(--outline);
+
+    box-shadow: var(--shadow-sm);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: #f8fafc;
+}
+
+th {
+
+    text-align: left;
+
+    font-size: 12px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.06em;
+
+    color: #64748b;
+
+    padding: 16px 20px;
+}
+
+td {
+
+    padding: 18px 20px;
+
+    border-top: 1px solid #f1f5f9;
+}
+
+tbody tr {
+
+    transition: var(--transition);
+}
+
+tbody tr:hover {
+
+    background: #f8fafc;
+}
+
+@media (max-width: 1024px) {
+    header {
+        padding: 12px 20px !important;
+    }
+
+    .main-content {
+        padding: 112px 24px 24px 24px;
+    }
+}
+
+/* Responsive topbar/sidebar toggle updates */
+.menu-toggle {
+    cursor: pointer;
+}
+
+.cards-container,
+.dashboard-grid,
+.stats-grid,
+.content-grid,
+.card-grid {
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Full-width content containers */
+main .mx-auto {
+    max-width: none !important;
+    width: 100%;
+}
+
+/* Dashboard cards - auto-fit grid */
+.stats-grid, .dashboard-grid, .card-grid, .content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+}
+
+/* Tables - full width with scroll */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.table-container table {
+    width: 100%;
+    min-width: 800px;
+}
+
+.card, .dashboard-card, .stat-card {
+    width: 100%;
+}
+
+body.sidebar-open {
+    overflow: hidden;
+}

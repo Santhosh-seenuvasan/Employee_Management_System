@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>HR Pulse – Sign In</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+                primary: "#2563eb",
+                "on-primary": "#ffffff",
+                surface: "#faf8ff",
+                "on-surface": "#191b23",
+                "outline": "#737686"
+            }
+          }
+        }
+      }
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="font-body-md text-on-surface antialiased">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    <!-- Note: this root-level index.html is required by Vite's dev server/build tool.
+         It mirrors public/index.html so the folder structure you specified is preserved. -->
+</body>
+</html>

@@ -1,0 +1,52 @@
+* {
+      font-family: "Inter", sans-serif;
+    }
+
+    body {
+      background: #f8fafc;
+    }
+
+    .material-symbols-outlined {
+      font-variation-settings:
+        "FILL" 0,
+        "wght" 400,
+        "GRAD" 0,
+        "opsz" 24;
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+    }
+
+    .step-active {
+      background: #2563eb;
+      color: white;
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+    }
+
+    .step-completed {
+      background: #10b981;
+      color: white;
+    }
+
+    .step-inactive {
+      background: #e2e8f0;
+      color: #64748b;
+    }
+
+    .radio-card input:checked + div {
+      border-color: #2563eb;
+      background: rgba(37, 99, 235, 0.08);
+    }
+
+    .radio-card input:checked + div .check-icon {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .check-icon {
+      opacity: 0;
+      transform: scale(0.7);
+      transition: all 0.25s ease;
+    }

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Projects - Management | HR Pulse</title>
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <!-- Shared CSS -->
+
+    <script>
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                primary: "#2563eb"
+              }
+            }
+          }
+        }
+    </script>
+    <link rel="stylesheet" href="../../shared/css/styles.css">
+    <link rel="stylesheet" href="page.css">
+</head>
+
+<body class="font-body-md text-on-surface antialiased overflow-hidden">
+<div class="flex h-screen overflow-hidden">
+<!-- MAIN CONTENT -->
+    <main class="main-content flex-1 overflow-y-auto pt-16">
+
+        
+<header
+    class="fixed top-0 left-0 right-0 z-50 h-16 bg-white border-b border-slate-200 shadow-sm flex items-center justify-between px-6">
+
+    <div class="flex items-center gap-4">
+
+        <button id="sidebarToggle"
+            class="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-slate-100 transition">
+            <span class="material-symbols-outlined text-slate-700">menu</span>
+        </button>
+        <h1 class="text-lg font-bold text-slate-800" id="page-header-title">
+            Corporate EMS
+        </h1>
+
+    </div>
+
+    <div class="flex items-center gap-3">
+
+        <button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-100 transition">
+            <span class="material-symbols-outlined text-slate-600">notifications</span>
+        </button>
+
+        <button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-100 transition">
+            <span class="material-symbols-outlined text-slate-600">settings</span>
+        </button>
+
+        <button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-100 transition">
+            <span class="material-symbols-outlined text-slate-600">help</span>
+        </button>
+
+        <div class="h-8 w-px bg-slate-200 mx-1"></div>
+
+        <div class="flex items-center gap-3">
+            <div class="hidden sm:block text-right">
+                <p class="text-sm font-bold text-slate-900">Alex Rivera</p>
+                <p class="text-[11px] text-slate-500">HR Manager</p>
+            </div>
+
+            <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold">
+                AR
+            </div>
+        </div>
+
+    </div>
+</header>
+
+<aside id="sidebar"
+    class="fixed top-16 left-0 z-40 h-[calc(100vh-64px)] w-[280px]
+           bg-white border-r border-slate-200 shadow-xl
+           transition-transform duration-300 ease-in-out
+           -translate-x-full">
+
+    <div class="h-full overflow-y-auto p-5">
+        <ul class="nav-menu flex flex-col gap-2" id="sidebar-menu"></ul>
+    </div>
+</aside>
+
+<div id="sidebarOverlay"
+    class="fixed inset-0 bg-black/40 z-30 hidden top-16"></div>
+
+        <div class="p-8 space-y-8">
+
+            <!-- Project Status Overview -->
+            
+                <!-- Search Bar Card -->
+                <div class="bg-white border border-slate-200 rounded-2xl shadow-sm px-5 py-4 flex items-center gap-3">
+                    <span class="material-symbols-outlined text-slate-400 text-xl">search</span>
+                    <input
+                        type="text"
+                        id="list-search-input"
+                        placeholder="Search..."
+                        class="flex-1 bg-transparent border-none outline-none text-sm text-slate-700 placeholder-slate-400"
+                        oninput="filterListItems(this.value)"
+                    />
+                    <button onclick="document.getElementById('list-search-input').value='';filterListItems('')" class="text-slate-400 hover:text-slate-600 transition-colors">
+                        <span class="material-symbols-outlined text-lg">close</span>
+                    </button>
+                </div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-3xl p-8 border border-slate-100">
+                    <p class="text-emerald-600 font-medium">On Track</p>
+                    <p class="text-5xl font-bold mt-3">8</p>
+                </div>
+                <div class="bg-white rounded-3xl p-8 border border-slate-100">
+                    <p class="text-amber-600 font-medium">At Risk</p>
+                    <p class="text-5xl font-bold mt-3">3</p>
+                </div>
+                <div class="bg-white rounded-3xl p-8 border border-slate-100">
+                    <p class="text-red-600 font-medium">Delayed</p>
+                    <p class="text-5xl font-bold mt-3">1</p>
+                </div>
+            </div>
+
+            <!-- Active Projects -->
+            <div class="bg-white rounded-3xl border border-slate-100 p-8">
+                <h3 class="font-semibold mb-6">Active Projects</h3>
+                <div class="space-y-6">
+                    <div class="flex items-center justify-between border-b pb-6">
+                        <div>
+                            <p class="font-medium">HR Portal Redesign</p>
+                            <p class="text-sm text-slate-500">Engineering + Design Team</p>
+                        </div>
+                        <div class="text-right">
+                            <div class="w-28 h-2 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-primary w-[88%]"></div>
+                            </div>
+                            <p class="text-xs mt-1">88% Complete</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between border-b pb-6">
+                        <div>
+                            <p class="font-medium">Q3 Performance System</p>
+                            <p class="text-sm text-slate-500">HR + IT Team</p>
+                        </div>
+                        <div class="text-right">
+                            <div class="w-28 h-2 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-amber-500 w-[45%]"></div>
+                            </div>
+                            <p class="text-xs mt-1">45% Complete</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+    <script src="../../shared/js/utils.js"></script>
+
+    <script src="../../shared/js/sidebar.js"></script>
+    <script src="page.js"></script>
+</body>
+</html>

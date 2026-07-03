@@ -1,0 +1,222 @@
+/* Minimal styles for modal classes used in the original HTML.
+   The original shared/css/auth-modals.css content was not provided,
+   so these are added only so the modals render/function as in the screenshot.
+   No structure, text, or class names from the HTML were altered. */
+
+.modal-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.5);
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.modal-backdrop.show {
+    display: flex;
+}
+
+.modal-card {
+    position: relative;
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 40px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+
+.modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    color: #737686;
+}
+
+.step-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.step-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #e2e8f0;
+}
+
+.step-dot.active {
+    background: #2563eb;
+    width: 24px;
+    border-radius: 4px;
+}
+
+.step-dot.done {
+    background: #93c5fd;
+}
+
+.modal-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.modal-icon.blue {
+    background: #dbeafe;
+    color: #2563eb;
+}
+
+.modal-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.modal-subtitle {
+    text-align: center;
+    color: #737686;
+    margin-bottom: 24px;
+    font-size: 14px;
+}
+
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.modal-field label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.modal-field input {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1px solid #737686;
+    outline: none;
+}
+
+.modal-field input:focus {
+    border-color: #2563eb;
+}
+
+.btn-modal-primary {
+    width: 100%;
+    padding: 14px;
+    background: #2563eb;
+    color: #ffffff;
+    font-weight: 600;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+}
+
+.btn-modal-primary.green {
+    background: #16a34a;
+}
+
+.btn-modal-ghost {
+    width: 100%;
+    padding: 14px;
+    background: transparent;
+    color: #2563eb;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+
+.modal-back-link {
+    text-align: center;
+    margin-top: 16px;
+}
+
+.modal-back-link button {
+    background: none;
+    border: none;
+    color: #737686;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.modal-error {
+    color: #dc2626;
+    font-size: 13px;
+    min-height: 18px;
+}
+
+.otp-grid {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.otp-cell {
+    width: 48px;
+    height: 56px;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 12px;
+    border: 1px solid #737686;
+    outline: none;
+}
+
+.otp-cell:focus {
+    border-color: #2563eb;
+}
+
+.otp-timer {
+    text-align: center;
+    margin-top: 16px;
+    color: #737686;
+    font-size: 14px;
+}
+
+.countdown {
+    font-weight: 600;
+    color: #2563eb;
+}
+
+.password-hints ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 13px;
+    color: #737686;
+}
+
+.hint-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 4px;
+}
+
+.success-icon-wrap {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: #dcfce7;
+    color: #16a34a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 36px;
+}

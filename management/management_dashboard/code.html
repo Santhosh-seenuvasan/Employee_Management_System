@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Corporate EMS - Management Dashboard</title>
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: "#2563eb",
+            secondary: "#7c3aed",
+            success: "#10b981",
+            danger: "#ef4444",
+            warning: "#f59e0b"
+          },
+          fontFamily: {
+            inter: ["Inter", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+    <link rel="stylesheet" href="../../shared/css/styles.css">
+    <link rel="stylesheet" href="page.css">
+</head>
+<body class="font-body-md text-on-surface antialiased overflow-hidden">
+<div class="flex h-screen overflow-hidden">
+<!-- SIDEBAR -->
+<!-- MAIN -->
+<main class="main-content flex-1 overflow-y-auto pt-16">
+<!-- HEADER -->
+
+<header
+    class="fixed top-0 left-0 right-0 z-50 h-16 bg-white border-b border-slate-200 shadow-sm flex items-center justify-between px-6">
+
+    <div class="flex items-center gap-4">
+
+        <button id="sidebarToggle"
+            class="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-slate-100 transition">
+            <span class="material-symbols-outlined text-slate-700">menu</span>
+        </button>
+        <h1 class="text-lg font-bold text-slate-800" id="page-header-title">
+            Corporate EMS
+        </h1>
+
+    </div>
+
+    <div class="flex items-center gap-3">
+
+        <button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-100 transition">
+            <span class="material-symbols-outlined text-slate-600">notifications</span>
+        </button>
+
+        <button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-100 transition">
+            <span class="material-symbols-outlined text-slate-600">settings</span>
+        </button>
+
+        <button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-100 transition">
+            <span class="material-symbols-outlined text-slate-600">help</span>
+        </button>
+
+        <div class="h-8 w-px bg-slate-200 mx-1"></div>
+
+        <div class="flex items-center gap-3">
+            <div class="hidden sm:block text-right">
+                <p class="text-sm font-bold text-slate-900">Alex Rivera</p>
+                <p class="text-[11px] text-slate-500">HR Manager</p>
+            </div>
+
+            <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold">
+                AR
+            </div>
+        </div>
+
+    </div>
+</header>
+
+<aside id="sidebar"
+    class="fixed top-16 left-0 z-40 h-[calc(100vh-64px)] w-[280px]
+           bg-white border-r border-slate-200 shadow-xl
+           transition-transform duration-300 ease-in-out
+           -translate-x-full">
+
+    <div class="h-full overflow-y-auto p-5">
+        <ul class="nav-menu flex flex-col gap-2" id="sidebar-menu"></ul>
+    </div>
+</aside>
+
+<div id="sidebarOverlay"
+    class="fixed inset-0 bg-black/40 z-30 hidden top-16"></div>
+
+<!-- CONTENT -->
+<div class="p-8 space-y-8">
+<!-- TOP -->
+<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5">
+<div>
+<h1 class="text-4xl font-extrabold">
+            Management Dashboard
+          </h1>
+<p class="text-slate-500 mt-2">
+            Welcome back, Marcus. Here's the current overview of your engineering department.
+          </p>
+</div>
+<div class="flex gap-3">
+<button class="px-5 h-12 rounded-xl border border-slate-300 bg-white hover:bg-slate-100 flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">
+              download
+            </span>
+            Export
+          </button>
+<button class="px-5 h-12 rounded-xl bg-primary text-white hover:bg-blue-700 flex items-center gap-2 shadow-lg shadow-blue-200">
+<span class="material-symbols-outlined text-[20px]">
+              add
+            </span>
+            New Task
+          </button>
+</div>
+</div>
+<!-- STATS -->
+<section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+<div class="bg-white rounded-3xl p-6 border border-slate-200">
+<div class="flex justify-between">
+<div>
+<p class="text-slate-500 text-sm">Total Employees</p>
+<h2 class="text-4xl font-extrabold mt-2">248</h2>
+</div>
+<div class="w-14 h-14 rounded-2xl bg-blue-100 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined">group</span>
+</div>
+</div>
+<p class="text-success text-sm mt-4 font-semibold">
+            +12 this month
+          </p>
+</div>
+<div class="bg-white rounded-3xl p-6 border border-slate-200">
+<div class="flex justify-between">
+<div>
+<p class="text-slate-500 text-sm">Attendance Rate</p>
+<h2 class="text-4xl font-extrabold mt-2">96%</h2>
+</div>
+<div class="w-14 h-14 rounded-2xl bg-green-100 text-success flex items-center justify-center">
+<span class="material-symbols-outlined">fact_check</span>
+</div>
+</div>
+<p class="text-success text-sm mt-4 font-semibold">
+            Excellent performance
+          </p>
+</div>
+<div class="bg-white rounded-3xl p-6 border border-slate-200">
+<div class="flex justify-between">
+<div>
+<p class="text-slate-500 text-sm">Open Projects</p>
+<h2 class="text-4xl font-extrabold mt-2">14</h2>
+</div>
+<div class="w-14 h-14 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center">
+<span class="material-symbols-outlined">assignment</span>
+</div>
+</div>
+<p class="text-warning text-sm mt-4 font-semibold">
+            4 near deadline
+          </p>
+</div>
+<div class="bg-white rounded-3xl p-6 border border-slate-200">
+<div class="flex justify-between">
+<div>
+<p class="text-slate-500 text-sm">Pending Approvals</p>
+<h2 class="text-4xl font-extrabold mt-2">09</h2>
+</div>
+<div class="w-14 h-14 rounded-2xl bg-red-100 text-danger flex items-center justify-center">
+<span class="material-symbols-outlined">pending_actions</span>
+</div>
+</div>
+<p class="text-danger text-sm mt-4 font-semibold">
+            Needs attention
+          </p>
+</div>
+</section>
+<!-- PRODUCTIVITY -->
+<section class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+<!-- Chart -->
+<div class="xl:col-span-2 bg-white rounded-3xl border border-slate-200 p-8">
+<div class="flex justify-between items-center mb-10">
+<div>
+<h3 class="text-2xl font-bold">
+                Team Productivity
+              </h3>
+<p class="text-slate-500 mt-1">
+                Weekly department performance
+              </p>
+</div>
+<div class="text-success font-bold">
+              +12.4%
+            </div>
+</div>
+<div class="h-72 flex items-end gap-5">
+<div class="flex-1 flex flex-col items-center">
+<div class="w-full bg-blue-500 rounded-t-2xl h-[50%]"></div>
+<span class="mt-3 text-sm text-slate-500">Mon</span>
+</div>
+<div class="flex-1 flex flex-col items-center">
+<div class="w-full bg-blue-500 rounded-t-2xl h-[65%]"></div>
+<span class="mt-3 text-sm text-slate-500">Tue</span>
+</div>
+<div class="flex-1 flex flex-col items-center">
+<div class="w-full bg-blue-500 rounded-t-2xl h-[90%]"></div>
+<span class="mt-3 text-sm text-slate-500">Wed</span>
+</div>
+<div class="flex-1 flex flex-col items-center">
+<div class="w-full bg-blue-500 rounded-t-2xl h-[80%]"></div>
+<span class="mt-3 text-sm text-slate-500">Thu</span>
+</div>
+<div class="flex-1 flex flex-col items-center">
+<div class="w-full bg-blue-500 rounded-t-2xl h-[70%]"></div>
+<span class="mt-3 text-sm text-slate-500">Fri</span>
+</div>
+</div>
+</div>
+<!-- Projects -->
+<div class="space-y-6">
+<div class="bg-white rounded-3xl border border-slate-200 p-6">
+<div class="flex justify-between mb-4">
+<h4 class="font-bold">Project Alpha</h4>
+<span class="text-primary font-bold">88%</span>
+</div>
+<div class="h-3 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[88%]"></div>
+</div>
+<p class="mt-4 text-sm text-slate-500">
+              14 tasks remaining
+            </p>
+</div>
+<div class="bg-white rounded-3xl border border-slate-200 p-6">
+<div class="flex justify-between mb-4">
+<h4 class="font-bold">Infrastructure Update</h4>
+<span class="text-warning font-bold">42%</span>
+</div>
+<div class="h-3 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-warning w-[42%]"></div>
+</div>
+<p class="mt-4 text-sm text-slate-500">
+              Awaiting QA approval
+            </p>
+</div>
+<div class="bg-white rounded-3xl border border-slate-200 p-6">
+<div class="flex justify-between mb-4">
+<h4 class="font-bold">Security Patching</h4>
+<span class="text-success font-bold">100%</span>
+</div>
+<div class="h-3 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-success w-full"></div>
+</div>
+<p class="mt-4 text-sm text-success font-semibold">
+              All systems secure
+            </p>
+</div>
+</div>
+</section>
+<!-- TABLE -->
+<section class="bg-white rounded-3xl border border-slate-200 overflow-hidden">
+<div class="p-6 border-b border-slate-200 flex items-center justify-between">
+<div>
+<h3 class="text-2xl font-bold">
+              Team Overview
+            </h3>
+<p class="text-slate-500 text-sm mt-1">
+              Engineering department employee status
+            </p>
+</div>
+<button class="px-4 h-11 rounded-xl border border-slate-300 hover:bg-slate-100">
+            View All
+          </button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full">
+<thead class="bg-slate-50">
+<tr class="text-left text-sm text-slate-500">
+<th class="px-6 py-4">Employee</th>
+<th class="px-6 py-4">Role</th>
+<th class="px-6 py-4">Status</th>
+<th class="px-6 py-4">Performance</th>
+<th class="px-6 py-4 text-right">Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-t hover:bg-slate-50">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full" src="https://i.pravatar.cc/100?img=1"/>
+<div>
+<h4 class="font-semibold">
+                        Liam Henderson
+                      </h4>
+<p class="text-sm text-slate-500">
+                        liam@corp.com
+                      </p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+                  Senior Backend Engineer
+                </td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-semibold">
+                    Active
+                  </span>
+</td>
+<td class="px-6 py-5">
+<div class="w-40 h-2 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[80%]"></div>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<button>
+<span class="material-symbols-outlined">
+                      more_vert
+                    </span>
+</button>
+</td>
+</tr>
+<tr class="border-t hover:bg-slate-50">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full" src="https://i.pravatar.cc/100?img=5"/>
+<div>
+<h4 class="font-semibold">
+                        Elena Rodriguez
+                      </h4>
+<p class="text-sm text-slate-500">
+                        elena@corp.com
+                      </p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+                  UX Engineer
+                </td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 rounded-full bg-yellow-100 text-yellow-700 text-xs font-semibold">
+                    In Meeting
+                  </span>
+</td>
+<td class="px-6 py-5">
+<div class="w-40 h-2 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-red-500 w-[95%]"></div>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<button>
+<span class="material-symbols-outlined">
+                      more_vert
+                    </span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</main>
+</div>
+    <script src="../../shared/js/utils.js"></script>
+
+    <script src="../../shared/js/sidebar.js"></script>
+    <script src="page.js"></script>
+</body>
+</html>

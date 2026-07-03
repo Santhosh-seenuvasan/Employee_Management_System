@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Payroll Management | HR Pulse</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#e2dfff",
+                        "on-error": "#ffffff",
+                        "background": "#faf8ff",
+                        "surface-dim": "#d9d9e5",
+                        "outline-variant": "#c3c6d7",
+                        "surface-tint": "#0053db",
+                        "on-surface-variant": "#434655",
+                        "surface-bright": "#faf8ff",
+                        "surface": "#faf8ff",
+                        "surface-container": "#ededf9",
+                        "surface-container-low": "#f3f3fe",
+                        "tertiary-fixed": "#ffdbcd",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-container-high": "#e7e7f3",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#fffbff",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "primary-container": "#2563eb",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#e1e2ed",
+                        "primary-fixed": "#dbe1ff",
+                        "inverse-surface": "#2e3039",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#943700",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#f0f0fb",
+                        "secondary-container": "#645efb",
+                        "on-primary-container": "#eeefff",
+                        "on-secondary-fixed-variant": "#3323cc",
+                        "on-secondary-fixed": "#0f0069",
+                        "on-background": "#191b23",
+                        "outline": "#737686",
+                        "on-surface": "#191b23",
+                        "secondary-fixed-dim": "#c3c0ff",
+                        "tertiary-container": "#bc4800",
+                        "on-tertiary-fixed": "#360f00",
+                        "surface-variant": "#e1e2ed",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "secondary": "#4b41e1",
+                        "primary": "#004ac6",
+                        "on-tertiary-container": "#ffede6",
+                        "inverse-primary": "#b4c5ff",
+                        "on-primary-fixed": "#00174b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "md": "16px",
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "base": "4px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "margin": "32px"
+                    },
+                    "fontFamily": {
+                        "h1": ["Inter"],
+                        "label-md": ["Inter"],
+                        "h3": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "h2": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "h1": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "h3": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "h2": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+    <link rel="stylesheet" href="../../shared/css/styles.css">
+    <link rel="stylesheet" href="page.css">
+</head>
+<!--
+ROLE: ADMIN_HR
+
+Recommended Sidebar Navigation:
+- Dashboard
+- Employee Directory
+- Payroll
+- Leave Approvals
+- Attendance
+- Recruitment
+- Reports
+- Settings
+
+UI Logic Validation:
+- Navigation items are role-specific
+- Dashboard access is logically separated
+- Permissions should be controlled by authentication middleware
+- Sidebar options align with expected enterprise HR workflows
+-->
+<body class="font-body-md text-on-surface antialiased overflow-hidden">
+<div class="flex h-screen overflow-hidden">
+<!-- MAIN CONTENT -->
+    <main class="main-content flex-1 overflow-y-auto pt-16">
+
+        
+<header
+    class="fixed top-0 left-0 right-0 z-50 h-16 bg-white border-b border-slate-200 shadow-sm flex items-center justify-between px-6">
+
+    <div class="flex items-center gap-4">
+
+        <button id="sidebarToggle"
+            class="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-slate-100 transition">
+            <span class="material-symbols-outlined text-slate-700">menu</span>
+        </button>
+        <h1 class="text-lg font-bold text-slate-800" id="page-header-title">
+            Corporate EMS
+        </h1>
+
+    </div>
+
+    <div class="flex items-center gap-3">
+
+        <button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-100 transition">
+            <span class="material-symbols-outlined text-slate-600">notifications</span>
+        </button>
+
+        <button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-100 transition">
+            <span class="material-symbols-outlined text-slate-600">settings</span>
+        </button>
+
+        <button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-100 transition">
+            <span class="material-symbols-outlined text-slate-600">help</span>
+        </button>
+
+        <div class="h-8 w-px bg-slate-200 mx-1"></div>
+
+        <div class="flex items-center gap-3">
+            <div class="hidden sm:block text-right">
+                <p class="text-sm font-bold text-slate-900">Alex Rivera</p>
+                <p class="text-[11px] text-slate-500">HR Manager</p>
+            </div>
+
+            <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold">
+                AR
+            </div>
+        </div>
+
+    </div>
+</header>
+
+<aside id="sidebar"
+    class="fixed top-16 left-0 z-40 h-[calc(100vh-64px)] w-[280px]
+           bg-white border-r border-slate-200 shadow-xl
+           transition-transform duration-300 ease-in-out
+           -translate-x-full">
+
+    <div class="h-full overflow-y-auto p-5">
+        <ul class="nav-menu flex flex-col gap-2" id="sidebar-menu"></ul>
+    </div>
+</aside>
+
+<div id="sidebarOverlay"
+    class="fixed inset-0 bg-black/40 z-30 hidden top-16"></div>
+
+        <!-- Content -->
+        <div class="p-8 max-w-[1600px] mx-auto w-full">
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-8">
+<div>
+<nav class="flex text-label-sm text-slate-500 mb-2 gap-2">
+<span>Organization</span>
+<span>/</span>
+<span class="text-primary">Payroll Center</span>
+</nav>
+<h1 class="font-h1 text-h1 text-slate-900">Payroll Overview</h1>
+<p class="text-body-md text-slate-500 mt-1">Manage employee compensation, tax compliance, and monthly disbursements.</p>
+</div>
+<button class="bg-primary-container text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-blue-600/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+                    Process Monthly Payroll
+                </button>
+</div>
+<!-- Bento Grid Summary -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-8">
+<div class="bg-white p-lg rounded-xl border border-outline-variant shadow-sm flex flex-col justify-between overflow-hidden relative group">
+<div class="relative z-10">
+<p class="text-label-sm text-slate-500 uppercase tracking-wider mb-1">Monthly Total Payroll</p>
+<h3 class="text-h1 font-bold text-slate-900">$482,950.00</h3>
+<div class="flex items-center gap-1 mt-4 text-emerald-600 text-xs font-bold">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                            +2.4% from last month
+                        </div>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-[120px]">payments</span>
+</div>
+</div>
+<div class="bg-white p-lg rounded-xl border border-outline-variant shadow-sm flex flex-col justify-between overflow-hidden relative group">
+<div class="relative z-10">
+<p class="text-label-sm text-slate-500 uppercase tracking-wider mb-1">Calculated Taxes</p>
+<h3 class="text-h1 font-bold text-slate-900">$84,120.45</h3>
+<div class="flex items-center gap-1 mt-4 text-slate-400 text-xs font-medium italic">
+                            Next filing in 12 days
+                        </div>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-[120px]">account_balance</span>
+</div>
+</div>
+<div class="bg-white p-lg rounded-xl border border-outline-variant shadow-sm flex flex-col justify-between overflow-hidden relative group">
+<div class="relative z-10">
+<p class="text-label-sm text-slate-500 uppercase tracking-wider mb-1">Bonus Distributions</p>
+<h3 class="text-h1 font-bold text-slate-900">$12,400.00</h3>
+<div class="flex items-center gap-1 mt-4 text-primary text-xs font-bold">
+                            Quarterly performance cycle
+                        </div>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-[120px]">card_giftcard</span>
+</div>
+</div>
+<div class="bg-slate-900 p-lg rounded-xl border border-slate-800 shadow-xl flex flex-col justify-between overflow-hidden relative text-white">
+<div class="relative z-10">
+<p class="text-label-sm text-slate-400 uppercase tracking-wider mb-1">Employees Paid</p>
+<h3 class="text-h1 font-bold">142 <span class="text-lg font-normal text-slate-400">/ 142</span></h3>
+<div class="w-full bg-slate-800 h-2 rounded-full mt-4 overflow-hidden">
+<div class="bg-primary w-full h-full"></div>
+</div>
+<p class="text-[11px] text-slate-400 mt-2">100% processing complete for Oct</p>
+</div>
+</div>
+</div>
+<!-- Main Content Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter items-start">
+<!-- Payroll Processing Table -->
+<div class="lg:col-span-2 bg-white rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+<div class="px-6 py-5 border-b border-outline-variant flex items-center justify-between bg-slate-50/50">
+<h3 class="font-h3 text-slate-900">Employee Disbursments</h3>
+<div class="flex gap-2">
+<button class="px-3 py-1.5 text-label-md text-slate-600 hover:bg-slate-200 rounded-lg transition-colors border border-slate-200 bg-white">Export CSV</button>
+<button class="px-3 py-1.5 text-label-md text-white bg-slate-900 rounded-lg hover:bg-slate-800 transition-colors">Bulk Pay</button>
+</div>
+</div>
+
+                <!-- Search Bar Card -->
+                <div class="bg-white border border-slate-200 rounded-2xl shadow-sm px-5 py-4 flex items-center gap-3">
+                    <span class="material-symbols-outlined text-slate-400 text-xl">search</span>
+                    <input
+                        type="text"
+                        id="list-search-input"
+                        placeholder="Search..."
+                        class="flex-1 bg-transparent border-none outline-none text-sm text-slate-700 placeholder-slate-400"
+                        oninput="filterListItems(this.value)"
+                    />
+                    <button onclick="document.getElementById('list-search-input').value='';filterListItems('')" class="text-slate-400 hover:text-slate-600 transition-colors">
+                        <span class="material-symbols-outlined text-lg">close</span>
+                    </button>
+                </div>
+
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-slate-50 sticky top-0">
+<tr>
+<th class="px-6 py-4 font-semibold text-slate-600 text-label-sm">EMPLOYEE</th>
+<th class="px-6 py-4 font-semibold text-slate-600 text-label-sm">BASE SALARY</th>
+<th class="px-6 py-4 font-semibold text-slate-600 text-label-sm">DEDUCTIONS</th>
+<th class="px-6 py-4 font-semibold text-slate-600 text-label-sm text-right">NET PAY</th>
+<th class="px-6 py-4 font-semibold text-slate-600 text-label-sm">STATUS</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-slate-50/80 transition-colors cursor-pointer group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img alt="Marcus Chen" class="w-9 h-9 rounded-full grayscale group-hover:grayscale-0 transition-all" data-alt="professional headshot of an Asian man with glasses wearing a crisp white shirt against a clean studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBJ3l_KVLfa8BGdCcrVoBAi57uLyl8BJMOvt96wbpLnmr8M1Q1qFDI7-ZGHOtveiuVw_75FSjxwUCk9O77oYaaR9SgADZNmy0Cqf6NEJDl4o_M7J1FowfOgdRocLd0wBTzfHNGaU22oAJOWzhaJK_jxT5tVugDbsIcGDliWF_gekyR6R6yCHs4G_IMsxbY7sNJF-FSVPhWkApLxvx-MMwTc7WkSguGoxN9VqmiudR5QdP011U2USdc1gW_hA8ybCvDPKpGn3aPav8"/>
+<div>
+<p class="font-bold text-slate-900 text-body-md">Marcus Chen</p>
+<p class="text-xs text-slate-500">Senior Dev (Tech)</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-600 font-medium">$9,500</td>
+<td class="px-6 py-4 text-error font-medium">-$1,240</td>
+<td class="px-6 py-4 text-right font-bold text-slate-900">$8,260</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-700 border border-emerald-200">
+                                            PAID
+                                        </span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/80 transition-colors cursor-pointer group border-l-4 border-l-primary bg-primary-container/5">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img alt="Elena Rodriguez" class="w-9 h-9 rounded-full grayscale group-hover:grayscale-0 transition-all" data-alt="professional portrait of a Latina woman in business attire with a warm, confident expression in an office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYeSJqWIQUXE9MvDUYxOBZyGqnB9ihBvc3f8B1NMeuHhL8BvsQIDqLW-bRylkd1WzKZ7-pKnXz3M5415yGuXRUf2oOL7eiHLTn589gNG3JiBAhVjipmbJ0g9gWXjMTTMOaQxUZyjh2Tf2jxvMaav8nWu0_nKXkmHbB4mIPoFoELRhddnz2FKtqWLKb-1QODxsbVWCsvj5b5BRPkN4tg3_w2otrv5VF4RKPwdGPDGyIb-PGSh3aT8GiUQLnn-HTPCf9IRGP_4MzRLg"/>
+<div>
+<p class="font-bold text-slate-900 text-body-md">Elena Rodriguez</p>
+<p class="text-xs text-slate-500">VP Marketing</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-600 font-medium">$14,200</td>
+<td class="px-6 py-4 text-error font-medium">-$2,100</td>
+<td class="px-6 py-4 text-right font-bold text-slate-900">$12,100</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-100 text-amber-700 border border-amber-200">
+                                            PROCESSING
+                                        </span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/80 transition-colors cursor-pointer group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img alt="Jordan Smith" class="w-9 h-9 rounded-full grayscale group-hover:grayscale-0 transition-all" data-alt="professional headshot of a Black man with a beard wearing a grey blazer in a modern office environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOCM3mkiXsS5kjJlN0dMn615kr6bY5OCF-90oSjnuhzn_C8wBWFzSzHHmVWh1X34EwTjusRED49JlbIrUjsF9a06HhvGdthr5QSPE90GqQ9LfBoXKocrvqmVpVpob7Fz1pUFsD1Xeb9AW8EsqoZ2WGwKeuVrDWy1q9kOyoN1JzaX0xb6-1VcB44_RzL-XAqU4J3LOZAhDpSbyWb9OE-RyTDFc6F8o9uxY38aoXGv6H9e-gcpKIEj_7sd2VNWqTSmlzna9dPQCQA0w"/>
+<div>
+<p class="font-bold text-slate-900 text-body-md">Jordan Smith</p>
+<p class="text-xs text-slate-500">UI Designer</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-600 font-medium">$7,800</td>
+<td class="px-6 py-4 text-error font-medium">-$920</td>
+<td class="px-6 py-4 text-right font-bold text-slate-900">$6,880</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-700 border border-emerald-200">
+                                            PAID
+                                        </span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/80 transition-colors cursor-pointer group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img alt="Sophie Laurent" class="w-9 h-9 rounded-full grayscale group-hover:grayscale-0 transition-all" data-alt="candid professional portrait of a woman looking thoughtfully towards a computer screen in a bright minimalist office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEGRC-YQuhHBW0oJureef1UEGwuVS9Pd_qCn-IYRubspWLc6GG6R8R31tTxVIxRiYvhLva-YLBpLuHrJwpR2HDBf84IDW-EhorNSe9iC1wlrHiFRcdlxL-ZBlDaHN11GbtkIZ6osij41G2nle4BsH824Qm_s5DpcflaoBehN8uCQaAC4cYqdEfNLD7vAQt4hSZaamuegiQHf5aKkNeba1XYZjlqtvMRcFzOUeqq1QVOEN5BTbuCjpw0GLvUs-mmZ_sQ2uBQO6O-m0"/>
+<div>
+<p class="font-bold text-slate-900 text-body-md">Sophie Laurent</p>
+<p class="text-xs text-slate-500">HR Specialist</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-600 font-medium">$6,200</td>
+<td class="px-6 py-4 text-error font-medium">-$780</td>
+<td class="px-6 py-4 text-right font-bold text-slate-900">$5,420</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-700 border border-emerald-200">
+                                            PAID
+                                        </span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/80 transition-colors cursor-pointer group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img alt="Liam Davies" class="w-9 h-9 rounded-full grayscale group-hover:grayscale-0 transition-all" data-alt="professional portrait of a man in casual business attire with a neutral expression in an outdoor city setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNrLOO9ZrcTmbcIMOclA5L3DM_edejGbnlgwuFjPxNQChrJZZSjbeezfOqi2CwDg_xdKgMEyWdwyikhQC8SmtYsv5wT3eOoW91j0UPUXKL8Kfa0f1eAcPrUT2jg1QIteJkYJsMG2JIHCWiLtMb-4y0lf2spjHU3TsEN4qUElqfwIpjkXBKRc40mBYwVhpC0VL1PS3NVRtohzqBHJ-MSZuu_46iJe85oFNuH1cJTjWbnZrogRTCOSEeaD-U4ic-73HuREKkPh0SSR8"/>
+<div>
+<p class="font-bold text-slate-900 text-body-md">Liam Davies</p>
+<p class="text-xs text-slate-500">Project Lead</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-600 font-medium">$11,000</td>
+<td class="px-6 py-4 text-error font-medium">-$1,450</td>
+<td class="px-6 py-4 text-right font-bold text-slate-900">$9,550</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-200">
+                                            PENDING
+                                        </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Payslip Preview Card -->
+<div class="bg-white rounded-xl border border-outline-variant shadow-sm sticky top-24">
+<div class="p-6 border-b border-outline-variant flex items-center justify-between">
+<h3 class="font-h3 text-slate-900">Payslip Preview</h3>
+<button class="text-primary hover:bg-primary/5 p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+</button>
+</div>
+<div class="p-8 space-y-6 bg-slate-50/50">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-sm">corporate_fare</span>
+</div>
+<span class="font-bold text-slate-900 text-xs">HR PULSE LTD</span>
+</div>
+<div class="text-right">
+<p class="text-[10px] text-slate-400 font-bold uppercase tracking-tighter">Payslip ID</p>
+<p class="text-xs font-mono text-slate-600">PS-2023-10-ER04</p>
+</div>
+</div>
+<div class="bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
+<div class="flex items-center gap-4 mb-4">
+<img alt="Elena Rodriguez" class="w-12 h-12 rounded-lg border" data-alt="professional portrait of a Latina woman in business attire with a warm, confident expression in an office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1Z3a5uoDbW2KA4WcY_jQcLtudYF9pndqbTyqH3oLL0RG2Asxtuqg5JKrYGA6Ttxpt7I9MnLGJaqpCBlL2tY4n-PP5IR43PLwL34jj5KNCybdLeNiwyZ-zoK7cM6IsHCIeaku0wNapB7UXirIYgbs-6K92ufQkPv80GzD0k7X53ja6L0G70mpvm_gN5hSP3nLaioCxWaDXGz5ZcbUQ77u1nRMBT2_3gWlv5btThKxjdZtiOOSxLrkK0Oh_DbI5nDgxzD3znR8_tkY"/>
+<div>
+<p class="font-bold text-slate-900">Elena Rodriguez</p>
+<p class="text-xs text-slate-500">Employee ID: #774-Marketing</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 border-t pt-4 border-dashed border-slate-200">
+<div>
+<p class="text-[10px] text-slate-400 font-bold">PAY DATE</p>
+<p class="text-xs font-semibold">Oct 31, 2023</p>
+</div>
+<div>
+<p class="text-[10px] text-slate-400 font-bold">PAY CYCLE</p>
+<p class="text-xs font-semibold">Monthly Oct</p>
+</div>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between text-body-md">
+<span class="text-slate-500">Basic Salary</span>
+<span class="font-semibold text-slate-900">$14,200.00</span>
+</div>
+<div class="flex justify-between text-body-md">
+<span class="text-slate-500">Performance Bonus</span>
+<span class="font-semibold text-slate-900">$850.00</span>
+</div>
+<div class="flex justify-between text-body-md">
+<span class="text-slate-500">Transportation Allowance</span>
+<span class="font-semibold text-slate-900">$200.00</span>
+</div>
+<div class="h-px bg-slate-200 my-2"></div>
+<div class="flex justify-between text-body-md text-error">
+<span>Income Tax (PAYE)</span>
+<span class="font-semibold">-$2,100.00</span>
+</div>
+<div class="flex justify-between text-body-md text-error">
+<span>Pension Scheme</span>
+<span class="font-semibold">-$420.00</span>
+</div>
+<div class="flex justify-between text-body-md text-error">
+<span>Health Insurance</span>
+<span class="font-semibold">-$630.00</span>
+</div>
+</div>
+<div class="bg-slate-900 text-white p-6 rounded-xl relative overflow-hidden">
+<p class="text-slate-400 text-xs font-medium relative z-10">Net Pay Disbursment</p>
+<h2 class="text-2xl font-bold relative z-10">$12,100.00</h2>
+<div class="absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-white/10 to-transparent"></div>
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-white/5 text-[100px]">verified</span>
+</div>
+<div class="text-center">
+<button class="w-full py-3 border border-slate-200 rounded-lg text-slate-600 hover:bg-slate-100 font-semibold transition-all">
+                                View Full Detailed Report
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    </main>
+</div>
+    <script src="../../shared/js/utils.js"></script>
+
+    <script src="../../shared/js/sidebar.js"></script>
+    <script src="page.js"></script>
+</body>
+</html>

@@ -1,0 +1,385 @@
+/* =============================================
+   auth-modals.css – Forgot Password Flow Modals
+   Part of HR Pulse EMS Shared Styles
+   ============================================= */
+
+/* ── Overlay Backdrop ── */
+.modal-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    animation: backdropFadeIn 0.22s ease forwards;
+}
+
+.modal-backdrop.active {
+    display: flex;
+}
+
+@keyframes backdropFadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* ── Modal Card ── */
+.modal-card {
+    width: 100%;
+    max-width: 460px;
+    background: #ffffff;
+    border-radius: 1.75rem;
+    box-shadow:
+        0 4px 6px -1px rgba(0,0,0,0.07),
+        0 25px 70px -10px rgba(0,0,0,0.28);
+    border: 1px solid rgba(226,232,240,0.8);
+    padding: 2.5rem 2.25rem;
+    position: relative;
+    animation: cardSlideUp 0.32s cubic-bezier(0.34,1.56,0.64,1) forwards;
+}
+
+@keyframes cardSlideUp {
+    from { opacity: 0; transform: translateY(28px) scale(0.96); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ── Close Button ── */
+.modal-close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 2.125rem;
+    height: 2.125rem;
+    border-radius: 50%;
+    border: none;
+    background: #f1f5f9;
+    color: #64748b;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s, color 0.15s, transform 0.15s;
+    font-size: 1.2rem;
+    line-height: 1;
+    font-family: 'Inter', sans-serif;
+}
+
+.modal-close:hover {
+    background: #e2e8f0;
+    color: #1e293b;
+    transform: scale(1.1);
+}
+
+/* ── Step Indicator Dots ── */
+.step-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1.75rem;
+}
+
+.step-dot {
+    height: 0.4rem;
+    border-radius: 9999px;
+    background: #e2e8f0;
+    transition: background 0.25s, width 0.3s ease;
+    width: 0.5rem;
+}
+
+.step-dot.active {
+    background: #2563eb;
+    width: 1.75rem;
+}
+
+.step-dot.done {
+    background: #93c5fd;
+    width: 0.5rem;
+}
+
+/* ── Icon Header ── */
+.modal-icon {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+}
+
+.modal-icon.blue  { background: #dbeafe; }
+.modal-icon.green { background: #d1fae5; }
+
+.modal-icon .material-symbols-outlined {
+    font-size: 2.75rem;
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+}
+
+.modal-icon.blue  .material-symbols-outlined { color: #2563eb; }
+.modal-icon.green .material-symbols-outlined { color: #059669; }
+
+/* ── Typography ── */
+.modal-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    text-align: center;
+    color: #0f172a;
+    margin: 0 0 0.625rem;
+    letter-spacing: -0.025em;
+    font-family: 'Inter', sans-serif;
+}
+
+.modal-subtitle {
+    text-align: center;
+    color: #64748b;
+    line-height: 1.7;
+    margin: 0 0 2rem;
+    font-size: 0.9375rem;
+}
+
+/* ── Form Layout ── */
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.125rem;
+}
+
+.modal-field label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 0.5rem;
+}
+
+.modal-field input[type="text"],
+.modal-field input[type="password"],
+.modal-field input[type="email"] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.875rem 1.125rem;
+    border-radius: 0.875rem;
+    border: 1.5px solid #cbd5e1;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9375rem;
+    color: #0f172a;
+    background: #f8fafc;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.modal-field input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.13);
+    background: #ffffff;
+}
+
+.modal-field input.error {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239,68,68,0.1);
+}
+
+/* ── Password Hints ── */
+.password-hints {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.875rem;
+    padding: 0.875rem 1.125rem;
+    font-size: 0.8125rem;
+    color: #64748b;
+}
+
+.password-hints ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.password-hints li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.password-hints li::before {
+    content: "•";
+    color: #94a3b8;
+    font-size: 1rem;
+    line-height: 1;
+}
+
+/* ── OTP Grid ── */
+.otp-grid {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 0.25rem 0;
+}
+
+.otp-cell {
+    width: 3rem;
+    height: 3.25rem;
+    text-align: center;
+    font-size: 1.375rem;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    border-radius: 0.875rem;
+    border: 1.5px solid #cbd5e1;
+    background: #f8fafc;
+    color: #0f172a;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    -moz-appearance: textfield;
+}
+
+.otp-cell::-webkit-outer-spin-button,
+.otp-cell::-webkit-inner-spin-button { -webkit-appearance: none; }
+
+.otp-cell:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.13);
+    background: #ffffff;
+}
+
+.otp-cell.filled {
+    border-color: #2563eb;
+    background: #eff6ff;
+    color: #1d4ed8;
+}
+
+/* ── OTP Timer ── */
+.otp-timer {
+    text-align: center;
+    font-size: 0.8125rem;
+    color: #64748b;
+    margin: 0.375rem 0 0;
+}
+
+.otp-timer .countdown {
+    font-weight: 700;
+    color: #2563eb;
+}
+
+/* ── Error Text ── */
+.modal-error {
+    color: #ef4444;
+    font-size: 0.8125rem;
+    margin: 0;
+    min-height: 1.1rem;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* ── Buttons ── */
+.btn-modal-primary {
+    width: 100%;
+    padding: 0.9375rem;
+    background: #2563eb;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    font-family: 'Inter', sans-serif;
+    border: none;
+    border-radius: 0.875rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+    box-shadow: 0 4px 14px rgba(37,99,235,0.28);
+    letter-spacing: 0.01em;
+}
+
+.btn-modal-primary:hover {
+    background: #1d4ed8;
+    box-shadow: 0 6px 20px rgba(37,99,235,0.38);
+}
+
+.btn-modal-primary:active {
+    transform: scale(0.98);
+}
+
+.btn-modal-primary.green {
+    background: #059669;
+    box-shadow: 0 4px 14px rgba(5,150,105,0.28);
+}
+
+.btn-modal-primary.green:hover {
+    background: #047857;
+    box-shadow: 0 6px 20px rgba(5,150,105,0.38);
+}
+
+.btn-modal-ghost {
+    width: 100%;
+    padding: 0.6875rem;
+    background: transparent;
+    color: #2563eb;
+    font-weight: 600;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.15s, text-decoration 0.15s;
+}
+
+.btn-modal-ghost:hover {
+    opacity: 0.75;
+    text-decoration: underline;
+}
+
+/* ── Back Link ── */
+.modal-back-link {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.modal-back-link button {
+    background: none;
+    border: none;
+    color: #2563eb;
+    font-weight: 600;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    padding: 0;
+    transition: opacity 0.15s;
+}
+
+.modal-back-link button:hover {
+    opacity: 0.75;
+    text-decoration: underline;
+}
+
+/* ── Success Icon ── */
+.success-icon-wrap {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    background: #d1fae5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    animation: successPop 0.5s cubic-bezier(0.34,1.56,0.64,1) 0.05s both;
+}
+
+@keyframes successPop {
+    from { transform: scale(0); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+}
+
+.success-icon-wrap .material-symbols-outlined {
+    font-size: 3.25rem;
+    color: #059669;
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+    animation: checkFade 0.35s ease 0.32s both;
+}
+
+@keyframes checkFade {
+    from { opacity: 0; transform: scale(0.5); }
+    to   { opacity: 1; transform: scale(1); }
+}

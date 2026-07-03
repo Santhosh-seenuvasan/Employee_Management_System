@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Add Employee - Payroll &amp; Benefits | Corporate EMS</title>
+
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1" rel="stylesheet"/>
+
+<script>
+tailwind.config = {
+    darkMode: "class",
+    theme: {
+        extend: {
+            colors: {
+                primary: "#2563eb",
+                background: "#f8fafc",
+                surface: "#ffffff",
+                border: "#e2e8f0",
+                muted: "#64748b",
+                success: "#10b981"
+            },
+            fontFamily: {
+                sans: ["Inter", "sans-serif"]
+            },
+            boxShadow: {
+                soft: "0 10px 40px rgba(15,23,42,0.08)"
+            }
+        }
+    }
+}
+</script>
+    <link rel="stylesheet" href="../../../shared/css/styles.css">
+    <link rel="stylesheet" href="page.css">
+</head>
+
+<body style="margin:0;overflow:hidden;">
+
+<!-- ═══════════════ FIXED FULL-WIDTH TOPBAR ═══════════════ -->
+
+<header
+    class="fixed top-0 left-0 right-0 z-50 h-16 bg-white border-b border-slate-200 shadow-sm flex items-center justify-between px-6">
+
+    <div class="flex items-center gap-4">
+
+        <button id="sidebarToggle"
+            class="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-slate-100 transition">
+            <span class="material-symbols-outlined text-slate-700">menu</span>
+        </button>
+
+    
+
+        <div class="h-6 w-px bg-slate-200"></div>
+
+        <h1 class="text-lg font-bold text-slate-800" id="page-header-title">
+            Corporate EMS
+        </h1>
+
+    </div>
+
+    <div class="flex items-center gap-3">
+
+        
+
+        <button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-100 transition">
+            <span class="material-symbols-outlined text-slate-600">notifications</span>
+        </button>
+
+        <button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-100 transition">
+            <span class="material-symbols-outlined text-slate-600">settings</span>
+        </button>
+
+        <button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-100 transition">
+            <span class="material-symbols-outlined text-slate-600">help</span>
+        </button>
+
+        <div class="h-8 w-px bg-slate-200 mx-1"></div>
+
+        <div class="flex items-center gap-3">
+            <div class="hidden sm:block text-right">
+                <p class="text-sm font-bold text-slate-900">Alex Rivera</p>
+                <p class="text-[11px] text-slate-500">HR Manager</p>
+            </div>
+
+            <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold">
+                AR
+            </div>
+        </div>
+
+    </div>
+</header>
+
+<aside id="sidebar"
+    class="fixed top-16 left-0 z-40 h-[calc(100vh-64px)] w-[280px]
+           bg-white border-r border-slate-200 shadow-xl
+           transition-transform duration-300 ease-in-out
+           -translate-x-full">
+
+    <div class="h-full overflow-y-auto p-5">
+        <ul class="nav-menu flex flex-col gap-2" id="sidebar-menu"></ul>
+    </div>
+</aside>
+
+<div id="sidebarOverlay"
+    class="fixed inset-0 bg-black/40 z-30 hidden top-16"></div>
+
+<!-- ═══════════════ BODY: SIDEBAR + CONTENT ═══════════════ -->
+<div style="display:flex;position:fixed;top:64px;left:0;right:0;bottom:0;overflow:hidden;">
+
+    <!-- PUSH SIDEBAR (hidden by default, slides in) -->
+    <aside id="sidebar-panel"
+        style="width:0;flex-shrink:0;overflow:hidden;
+               transition:width 0.3s cubic-bezier(0.4,0,0.2,1);
+               background:rgba(255,255,255,0.97);
+               border-right:1px solid #e2e8f0;
+               box-shadow:2px 0 16px rgba(15,23,42,0.08);">
+        <div style="width:280px;height:100%;overflow-y:auto;padding:20px 16px;">
+            <ul class="nav-menu" id="sidebar-menu" style="list-style:none;display:flex;flex-direction:column;gap:4px;"></ul>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 overflow-y-auto pt-16" style="min-width:0;">
+
+<!-- CONTENT -->
+        <div class="p-8">
+
+            
+<header class="sticky top-0 z-50 flex items-center justify-between px-6 h-16 bg-white/80 backdrop-blur-md border-b border-slate-200 shadow-sm">
+
+    <div class="flex items-center gap-4">
+        <button id="sidebarToggle"
+            class="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-slate-100 transition">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+
+        <h2 class="text-lg font-semibold text-slate-800" id="page-header-title">
+            Employee Onboarding
+        </h2>
+    </div>
+
+    <div class="flex items-center gap-4">
+
+        <button
+            class="w-10 h-10 flex items-center justify-center rounded-full text-slate-600 hover:bg-slate-100 transition-colors">
+            <span class="material-symbols-outlined">notifications</span>
+        </button>
+
+        <button
+            class="w-10 h-10 flex items-center justify-center rounded-full text-slate-600 hover:bg-slate-100 transition-colors">
+            <span class="material-symbols-outlined">help</span>
+        </button>
+
+        <div class="h-8 w-px bg-slate-200"></div>
+
+        <div class="flex items-center gap-3">
+
+            <div class="text-right hidden sm:block">
+                <p class="font-bold text-slate-900 text-sm leading-none">
+                    Alex Rivera
+                </p>
+
+                <p class="text-[10px] text-slate-500 mt-1">
+                    HR Manager
+                </p>
+            </div>
+
+            <div
+                class="w-10 h-10 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold">
+                AR
+            </div>
+        </div>
+    </div>
+</header>
+
+        <!-- CONTENT -->
+        <div class="p-8">
+
+            <!-- HEADER -->
+            <div class="max-w-6xl mx-auto flex items-end justify-between mb-10">
+
+                <div>
+                    <h1 class="text-4xl font-black mb-2">
+                        Payroll &amp; Benefits
+                    </h1>
+
+                    <p class="text-slate-500 text-lg">
+                        Configure salary structure, benefits, and banking details.
+                    </p>
+                </div>
+
+                <div class="text-right">
+                    <span class="bg-blue-100 text-primary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest">
+                        Step 3 of 4
+                    </span>
+                </div>
+            </div>
+
+            <!-- STEPPER -->
+            <div class="max-w-6xl mx-auto mb-12">
+
+                <div class="relative flex justify-between">
+
+                    <!-- LINE -->
+                    <div class="absolute top-5 left-0 w-full h-[2px] bg-slate-200">
+                        <div class="h-full w-2/3 bg-primary"></div>
+                    </div>
+
+                    <!-- STEP 1 -->
+                    <div class="relative z-10 flex flex-col items-center">
+                        <div class="w-10 h-10 rounded-full bg-success text-white flex items-center justify-center shadow-lg border-4 border-white">
+                            <span class="material-symbols-outlined text-lg">
+                                check
+                            </span>
+                        </div>
+
+                        <span class="mt-2 text-xs font-bold text-success uppercase">
+                            Personal
+                        </span>
+                    </div>
+
+                    <!-- STEP 2 -->
+                    <div class="relative z-10 flex flex-col items-center">
+                        <div class="w-10 h-10 rounded-full bg-success text-white flex items-center justify-center shadow-lg border-4 border-white">
+                            <span class="material-symbols-outlined text-lg">
+                                check
+                            </span>
+                        </div>
+
+                        <span class="mt-2 text-xs font-bold text-success uppercase">
+                            Job &amp; Role
+                        </span>
+                    </div>
+
+                    <!-- STEP 3 -->
+                    <div class="relative z-10 flex flex-col items-center">
+                        <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center shadow-xl border-4 border-white font-bold">
+                            3
+                        </div>
+
+                        <span class="mt-2 text-xs font-bold text-primary uppercase">
+                            Payroll
+                        </span>
+                    </div>
+
+                    <!-- STEP 4 -->
+                    <div class="relative z-10 flex flex-col items-center">
+                        <div class="w-10 h-10 rounded-full bg-white border-2 border-slate-300 text-slate-400 flex items-center justify-center border-4 border-white">
+                            4
+                        </div>
+
+                        <span class="mt-2 text-xs font-bold text-slate-400 uppercase">
+                            Review
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- MAIN GRID -->
+            <div class="max-w-6xl mx-auto grid grid-cols-12 gap-6">
+
+                <!-- LEFT -->
+                <div class="col-span-12 lg:col-span-7 space-y-6">
+
+                    <!-- COMPENSATION -->
+                    <div class="bg-white rounded-3xl border border-slate-200 p-8 shadow-soft">
+
+                        <div class="flex items-center gap-4 mb-8">
+
+                            <div class="w-14 h-14 rounded-2xl bg-blue-50 text-primary flex items-center justify-center">
+                                <span class="material-symbols-outlined text-3xl">
+                                    payments
+                                </span>
+                            </div>
+
+                            <div>
+                                <h2 class="text-2xl font-bold">
+                                    Compensation
+                                </h2>
+
+                                <p class="text-slate-500">
+                                    Configure employee salary structure
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-semibold mb-2">
+                                    Annual Base Salary
+                                </label>
+
+                                <div class="relative">
+
+                                    <span class="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 text-xl font-bold">
+                                        ₹
+                                    </span>
+
+                                    <input
+                                        class="w-full pl-12 pr-5 py-5 rounded-2xl border border-slate-300 text-3xl font-bold focus:ring-2 focus:ring-primary focus:border-primary outline-none"
+                                        placeholder="1200000"
+                                        type="number"/>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-semibold mb-2">
+                                    Payment Frequency
+                                </label>
+
+                                <select class="w-full rounded-2xl border border-slate-300 px-5 py-4 focus:ring-2 focus:ring-primary focus:border-primary outline-none">
+                                    <option>Monthly</option>
+                                    <option>Bi-weekly</option>
+                                    <option>Weekly</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-semibold mb-2">
+                                    Currency
+                                </label>
+
+                                <select class="w-full rounded-2xl border border-slate-300 px-5 py-4 focus:ring-2 focus:ring-primary focus:border-primary outline-none">
+                                    <option>INR</option>
+                                    <option>USD</option>
+                                    <option>EUR</option>
+                                    <option>GBP</option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- BANK DETAILS -->
+                    <div class="bg-white rounded-3xl border border-slate-200 p-8 shadow-soft">
+
+                        <div class="flex items-center gap-4 mb-8">
+
+                            <div class="w-14 h-14 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-3xl">
+                                    account_balance
+                                </span>
+                            </div>
+
+                            <div>
+                                <h2 class="text-2xl font-bold">
+                                    Bank Details
+                                </h2>
+
+                                <p class="text-slate-500">
+                                    Secure employee payroll account information
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                            <div>
+                                <label class="block text-sm font-semibold mb-2">
+                                    Account Holder
+                                </label>
+
+                                <input
+                                    class="w-full rounded-2xl border border-slate-300 px-5 py-4 focus:ring-2 focus:ring-primary focus:border-primary outline-none"
+                                    placeholder="Full Name"
+                                    type="text"/>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-semibold mb-2">
+                                    Bank Name
+                                </label>
+
+                                <input
+                                    class="w-full rounded-2xl border border-slate-300 px-5 py-4 focus:ring-2 focus:ring-primary focus:border-primary outline-none"
+                                    placeholder="State Bank of India"
+                                    type="text"/>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-semibold mb-2">
+                                    Account Number
+                                </label>
+
+                                <input
+                                    class="w-full rounded-2xl border border-slate-300 px-5 py-4 focus:ring-2 focus:ring-primary focus:border-primary outline-none"
+                                    placeholder="XXXX XXXX XXXX"
+                                    type="text"/>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-semibold mb-2">
+                                    IFSC Code
+                                </label>
+
+                                <input
+                                    class="w-full rounded-2xl border border-slate-300 px-5 py-4 focus:ring-2 focus:ring-primary focus:border-primary outline-none"
+                                    placeholder="SBIN0000456"
+                                    type="text"/>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- RIGHT -->
+                <div class="col-span-12 lg:col-span-5 space-y-6">
+
+                    <!-- BENEFITS -->
+                    <div class="bg-white rounded-3xl border border-slate-200 p-8 shadow-soft">
+
+                        <div class="flex items-center gap-4 mb-8">
+
+                            <div class="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-3xl">
+                                    redeem
+                                </span>
+                            </div>
+
+                            <div>
+                                <h2 class="text-2xl font-bold">
+                                    Benefits
+                                </h2>
+
+                                <p class="text-slate-500">
+                                    Employee benefit configuration
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-6">
+
+                            <label class="flex items-start gap-4 p-5 rounded-2xl border border-slate-200 hover:bg-slate-50 transition cursor-pointer">
+
+                                <input checked class="mt-1 w-5 h-5 accent-primary" type="checkbox"/>
+
+                                <div>
+                                    <h4 class="font-semibold">
+                                        Health Insurance
+                                    </h4>
+
+                                    <p class="text-sm text-slate-500 mt-1">
+                                        Premium corporate medical plan coverage
+                                    </p>
+                                </div>
+                            </label>
+
+                            <label class="flex items-start gap-4 p-5 rounded-2xl border border-slate-200 hover:bg-slate-50 transition cursor-pointer">
+
+                                <input checked class="mt-1 w-5 h-5 accent-primary" type="checkbox"/>
+
+                                <div>
+                                    <h4 class="font-semibold">
+                                        Provident Fund
+                                    </h4>
+
+                                    <p class="text-sm text-slate-500 mt-1">
+                                        Employee PF contribution enabled
+                                    </p>
+                                </div>
+                            </label>
+
+                            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+
+                                <div class="flex justify-between mb-4">
+
+                                    <label class="font-semibold">
+                                        Retirement Contribution
+                                    </label>
+
+                                    <span class="font-bold text-primary">
+                                        5%
+                                    </span>
+                                </div>
+
+                                <input
+                                    class="w-full accent-primary"
+                                    max="20"
+                                    min="0"
+                                    type="range"
+                                    value="5"/>
+
+                                <div class="flex justify-between text-xs text-slate-400 mt-2">
+                                    <span>0%</span>
+                                    <span>20%</span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-semibold mb-2">
+                                    Additional Notes
+                                </label>
+
+                                <textarea
+                                    class="w-full rounded-2xl border border-slate-300 px-5 py-4 resize-none focus:ring-2 focus:ring-primary focus:border-primary outline-none"
+                                    placeholder="Optional notes about compensation or benefits..."
+                                    rows="4"></textarea>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- SECURITY -->
+                    <div class="bg-blue-50 border border-blue-100 rounded-3xl p-6">
+
+                        <div class="flex gap-4">
+
+                            <div class="text-primary">
+                                <span class="material-symbols-outlined text-3xl">
+                                    verified_user
+                                </span>
+                            </div>
+
+                            <div>
+
+                                <h4 class="font-semibold mb-2">
+                                    Payroll Security
+                                </h4>
+
+                                <p class="text-sm text-slate-600 leading-relaxed">
+                                    All payroll and banking data is encrypted and protected using enterprise-grade security standards.
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- FOOTER -->
+            <div class="max-w-6xl mx-auto mt-10 flex items-center justify-between">
+
+                <!-- BACK -->
+                <button
+                    onclick="window.location.href='../add_employee_job_role_step_2/code.html'"
+                    class="flex items-center gap-3 px-6 py-4 rounded-2xl border border-slate-300 font-semibold hover:bg-slate-100 transition">
+
+                    <span class="material-symbols-outlined">
+                        arrow_back
+                    </span>
+
+                    Back
+                </button>
+
+                <!-- RIGHT -->
+                <div class="flex items-center gap-4">
+
+                    <button
+                        class="px-6 py-4 text-slate-500 font-semibold hover:text-slate-900 transition">
+
+                        Save Draft
+                    </button>
+
+                    <button
+                        onclick="window.location.href='../add_employee_review_step_4/code.html'"
+                        class="flex items-center gap-3 bg-primary hover:bg-blue-700 text-white px-8 py-4 rounded-2xl font-bold shadow-lg transition">
+
+                        Next Step
+
+                        <span class="material-symbols-outlined">
+                            arrow_forward
+                        </span>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+</div>
+    <script src="../../../shared/js/utils.js"></script>
+
+    <script src="../../../shared/js/sidebar.js"></script>
+    <script src="page.js"></script>
+</body>
+</html>

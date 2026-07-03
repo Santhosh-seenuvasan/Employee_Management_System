@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Leave Management - HR Pulse</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#2563eb",
+                        "on-primary": "#ffffff",
+                        background: "#faf8ff",
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../shared/css/styles.css">
+    <link rel="stylesheet" href="page.css">
+</head>
+<body class="font-body-md text-on-surface antialiased overflow-hidden">
+<div class="flex h-screen overflow-hidden">
+<!-- SIDEBAR -->
+<!-- MAIN -->
+<main class="main-content flex-1 overflow-y-auto pt-16">
+<!-- TOP HEADER -->
+
+<header
+    class="fixed top-0 left-0 right-0 z-50 h-16 bg-white border-b border-slate-200 shadow-sm flex items-center justify-between px-6">
+
+    <div class="flex items-center gap-4">
+
+        <button id="sidebarToggle"
+            class="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-slate-100 transition">
+            <span class="material-symbols-outlined text-slate-700">menu</span>
+        </button>
+        <h1 class="text-lg font-bold text-slate-800" id="page-header-title">
+            Corporate EMS
+        </h1>
+
+    </div>
+
+    <div class="flex items-center gap-3">
+
+        <button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-100 transition">
+            <span class="material-symbols-outlined text-slate-600">notifications</span>
+        </button>
+
+        <button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-100 transition">
+            <span class="material-symbols-outlined text-slate-600">settings</span>
+        </button>
+
+        <button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-100 transition">
+            <span class="material-symbols-outlined text-slate-600">help</span>
+        </button>
+
+        <div class="h-8 w-px bg-slate-200 mx-1"></div>
+
+        <div class="flex items-center gap-3">
+            <div class="hidden sm:block text-right">
+                <p class="text-sm font-bold text-slate-900">Alex Rivera</p>
+                <p class="text-[11px] text-slate-500">HR Manager</p>
+            </div>
+
+            <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold">
+                AR
+            </div>
+        </div>
+
+    </div>
+</header>
+
+<aside id="sidebar"
+    class="fixed top-16 left-0 z-40 h-[calc(100vh-64px)] w-[280px]
+           bg-white border-r border-slate-200 shadow-xl
+           transition-transform duration-300 ease-in-out
+           -translate-x-full">
+
+    <div class="h-full overflow-y-auto p-5">
+        <ul class="nav-menu flex flex-col gap-2" id="sidebar-menu"></ul>
+    </div>
+</aside>
+
+<div id="sidebarOverlay"
+    class="fixed inset-0 bg-black/40 z-30 hidden top-16"></div>
+
+<!-- CONTENT -->
+<main class="main-content flex-1 overflow-y-auto pt-16">
+<!-- Page Title -->
+<div class="flex justify-between items-end mb-8">
+<div>
+<h1 class="text-3xl font-bold mb-1">
+                            Leave Management
+                        </h1>
+<p class="text-slate-500">
+                            Monitor department absences and manage employee requests.
+                        </p>
+</div>
+</div>
+<!-- Stats -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+<div class="bg-white rounded-3xl p-6 border border-slate-100">
+<h4 class="font-semibold text-slate-500">
+                            TOTAL ON LEAVE
+                        </h4>
+<p class="text-4xl font-bold text-primary mt-2">
+                            14
+                        </p>
+<p class="text-sm text-slate-500 mt-2">
+                            Currently out of office
+                        </p>
+</div>
+<div class="bg-white rounded-3xl p-6 border border-slate-100">
+<h4 class="font-semibold text-slate-500">
+                            PENDING REQUESTS
+                        </h4>
+<p class="text-4xl font-bold text-amber-500 mt-2">
+                            08
+                        </p>
+<p class="text-sm text-slate-500 mt-2">
+                            Awaiting HR approval
+                        </p>
+</div>
+<div class="bg-white rounded-3xl p-6 border border-slate-100">
+<h4 class="font-semibold text-slate-500">
+                            TEAM COVERAGE
+                        </h4>
+<p class="text-4xl font-bold text-emerald-600 mt-2">
+                            92%
+                        </p>
+<p class="text-sm text-slate-500 mt-2">
+                            Sufficient staff
+                        </p>
+</div>
+<div class="bg-white rounded-3xl p-6 border border-slate-100">
+<h4 class="font-semibold text-slate-500">
+                            SICK LEAVE TREND
+                        </h4>
+<p class="text-4xl font-bold text-emerald-600 mt-2">
+                            Low
+                        </p>
+<p class="text-sm text-slate-500 mt-2">
+                            Consistent with average
+                        </p>
+</div>
+</div>
+<!-- Main Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Table -->
+<div class="lg:col-span-2 bg-white rounded-3xl border border-slate-100 overflow-hidden">
+<div class="p-6 border-b border-slate-100 flex items-center justify-between">
+<h3 class="font-semibold text-xl">
+                                Pending Requests
+                            </h3>
+<button class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-sm font-medium transition-colors">
+                                View History
+                            </button>
+</div>
+
+                <!-- Search Bar Card -->
+                <div class="bg-white border border-slate-200 rounded-2xl shadow-sm px-5 py-4 flex items-center gap-3">
+                    <span class="material-symbols-outlined text-slate-400 text-xl">search</span>
+                    <input
+                        type="text"
+                        id="list-search-input"
+                        placeholder="Search..."
+                        class="flex-1 bg-transparent border-none outline-none text-sm text-slate-700 placeholder-slate-400"
+                        oninput="filterListItems(this.value)"
+                    />
+                    <button onclick="document.getElementById('list-search-input').value='';filterListItems('')" class="text-slate-400 hover:text-slate-600 transition-colors">
+                        <span class="material-symbols-outlined text-lg">close</span>
+                    </button>
+                </div>
+
+<div class="overflow-x-auto">
+<table class="w-full">
+<thead class="bg-slate-50">
+<tr class="text-left text-xs uppercase text-slate-500">
+<th class="px-6 py-4">Employee</th>
+<th class="px-6 py-4">Type</th>
+<th class="px-6 py-4">Duration</th>
+<th class="px-6 py-4">Status</th>
+<th class="px-6 py-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100">
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img alt="" class="w-10 h-10 rounded-full" src="https://i.pravatar.cc/40?img=1"/>
+<div>
+<p class="font-semibold text-sm">
+                                                        Marcus Wright
+                                                    </p>
+<p class="text-xs text-slate-500">
+                                                        Sales Department
+                                                    </p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm">
+                                            Annual Leave
+                                        </td>
+<td class="px-6 py-4 text-sm">
+                                            Oct 12 - 15
+                                        </td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 rounded-full bg-amber-100 text-amber-700 text-xs font-semibold">
+                                                Pending
+                                            </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 rounded-lg text-emerald-600 hover:bg-emerald-50">
+<span class="material-symbols-outlined">
+                                                        check_circle
+                                                    </span>
+</button>
+<button class="p-2 rounded-lg text-red-500 hover:bg-red-50">
+<span class="material-symbols-outlined">
+                                                        cancel
+                                                    </span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Right Panel -->
+<div class="space-y-6">
+<!-- Calendar -->
+<div class="bg-white rounded-3xl border border-slate-100 p-6">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-semibold text-xl">
+                                    October 2023
+                                </h3>
+<div class="flex gap-2">
+<button class="p-2 rounded-lg hover:bg-slate-100">
+<span class="material-symbols-outlined">
+                                            chevron_left
+                                        </span>
+</button>
+<button class="p-2 rounded-lg hover:bg-slate-100">
+<span class="material-symbols-outlined">
+                                            chevron_right
+                                        </span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-7 gap-2 text-center text-sm">
+<div class="font-semibold text-slate-400">S</div>
+<div class="font-semibold text-slate-400">M</div>
+<div class="font-semibold text-slate-400">T</div>
+<div class="font-semibold text-slate-400">W</div>
+<div class="font-semibold text-slate-400">T</div>
+<div class="font-semibold text-slate-400">F</div>
+<div class="font-semibold text-slate-400">S</div>
+<div class="p-3 rounded-xl bg-slate-50">1</div>
+<div class="p-3 rounded-xl bg-slate-50">2</div>
+<div class="p-3 rounded-xl bg-primary text-white">3</div>
+<div class="p-3 rounded-xl bg-slate-50">4</div>
+<div class="p-3 rounded-xl bg-slate-50">5</div>
+<div class="p-3 rounded-xl bg-slate-50">6</div>
+<div class="p-3 rounded-xl bg-slate-50">7</div>
+</div>
+</div>
+<!-- Analytics -->
+<div class="bg-primary text-white rounded-3xl p-6">
+<h3 class="text-xl font-bold mb-3">
+                                Leave Utilization
+                            </h3>
+<p class="text-sm text-blue-100 mb-6">
+                                Engineering department has the highest leave utilization this month.
+                            </p>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between text-sm mb-1">
+<span>Engineering</span>
+<span>78%</span>
+</div>
+<div class="h-2 bg-white/20 rounded-full overflow-hidden">
+<div class="h-full bg-white rounded-full w-[78%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-sm mb-1">
+<span>Marketing</span>
+<span>42%</span>
+</div>
+<div class="h-2 bg-white/20 rounded-full overflow-hidden">
+<div class="h-full bg-white rounded-full w-[42%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+    <script src="../../shared/js/utils.js"></script>
+
+    <script src="../../shared/js/sidebar.js"></script>
+    <script src="page.js"></script>
+</body>
+</html>

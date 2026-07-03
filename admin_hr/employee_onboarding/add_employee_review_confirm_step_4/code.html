@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Add Employee - Review &amp; Confirm | HRM Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#2563eb",
+                        background: "#faf8ff",
+                        surface: "#ffffff",
+                        outline: "#dbe0ea",
+                        muted: "#64748b"
+                    },
+                    boxShadow: {
+                        soft: "0px 10px 30px rgba(15,23,42,0.08)"
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../../shared/css/styles.css">
+    <link rel="stylesheet" href="page.css">
+</head>
+<body style="margin:0;overflow:hidden;">
+
+<!-- ═══════════════ FIXED FULL-WIDTH TOPBAR ═══════════════ -->
+
+<header
+    class="fixed top-0 left-0 right-0 z-50 h-16 bg-white border-b border-slate-200 shadow-sm flex items-center justify-between px-6">
+
+    <div class="flex items-center gap-4">
+
+        <button id="sidebarToggle"
+            class="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-slate-100 transition">
+            <span class="material-symbols-outlined text-slate-700">menu</span>
+        </button>
+
+        <div class="h-6 w-px bg-slate-200"></div>
+
+        <h1 class="text-lg font-bold text-slate-800" id="page-header-title">
+            Corporate EMS
+        </h1>
+
+    </div>
+
+    <div class="flex items-center gap-3">
+
+        
+
+        <button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-100 transition">
+            <span class="material-symbols-outlined text-slate-600">notifications</span>
+        </button>
+
+        <button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-100 transition">
+            <span class="material-symbols-outlined text-slate-600">settings</span>
+        </button>
+
+        <button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-100 transition">
+            <span class="material-symbols-outlined text-slate-600">help</span>
+        </button>
+
+        <div class="h-8 w-px bg-slate-200 mx-1"></div>
+
+        <div class="flex items-center gap-3">
+            <div class="hidden sm:block text-right">
+                <p class="text-sm font-bold text-slate-900">Alex Rivera</p>
+                <p class="text-[11px] text-slate-500">HR Manager</p>
+            </div>
+
+            <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold">
+                AR
+            </div>
+        </div>
+
+    </div>
+</header>
+
+<aside id="sidebar"
+    class="fixed top-16 left-0 z-40 h-[calc(100vh-64px)] w-[280px]
+           bg-white border-r border-slate-200 shadow-xl
+           transition-transform duration-300 ease-in-out
+           -translate-x-full">
+
+    <div class="h-full overflow-y-auto p-5">
+        <ul class="nav-menu flex flex-col gap-2" id="sidebar-menu"></ul>
+    </div>
+</aside>
+
+<div id="sidebarOverlay"
+    class="fixed inset-0 bg-black/40 z-30 hidden top-16"></div>
+
+<!-- ═══════════════ BODY: SIDEBAR + CONTENT ═══════════════ -->
+<div style="display:flex;position:fixed;top:64px;left:0;right:0;bottom:0;overflow:hidden;">
+
+    <!-- PUSH SIDEBAR (hidden by default, slides in) -->
+    <aside id="sidebar-panel"
+        style="width:0;flex-shrink:0;overflow:hidden;
+               transition:width 0.3s cubic-bezier(0.4,0,0.2,1);
+               background:rgba(255,255,255,0.97);
+               border-right:1px solid #e2e8f0;
+               box-shadow:2px 0 16px rgba(15,23,42,0.08);">
+        <div style="width:280px;height:100%;overflow-y:auto;padding:20px 16px;">
+            <ul class="nav-menu" id="sidebar-menu" style="list-style:none;display:flex;flex-direction:column;gap:4px;"></ul>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 overflow-y-auto pt-16" style="min-width:0;">
+
+<!-- CONTENT -->
+<div class="p-8">
+<!-- Progress -->
+<div class="max-w-6xl mx-auto mb-10">
+<div class="flex items-center justify-between relative">
+<!-- line -->
+<div class="absolute left-0 top-5 h-[3px] w-full bg-slate-200 -z-10">
+<div class="h-full w-full bg-blue-600"></div>
+</div>
+<!-- steps -->
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</div>
+<span class="text-xs font-bold text-blue-600">PERSONAL</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</div>
+<span class="text-xs font-bold text-blue-600">EMPLOYMENT</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</div>
+<span class="text-xs font-bold text-blue-600">PAYROLL</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center ring-[6px] ring-blue-100 shadow-xl">
+<span class="font-bold">4</span>
+</div>
+<span class="text-xs font-extrabold text-slate-900">REVIEW</span>
+</div>
+</div>
+</div>
+<!-- GRID -->
+<div class="max-w-6xl mx-auto grid grid-cols-12 gap-8">
+<!-- LEFT PROFILE -->
+<div class="col-span-12 lg:col-span-4">
+<div class="bg-white rounded-[32px] border border-slate-200 shadow-soft p-8 sticky top-28">
+<!-- Profile -->
+<div class="flex flex-col items-center text-center">
+<div class="relative">
+<img alt="employee" class="w-32 h-32 rounded-full object-cover border-[6px] border-blue-100" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&amp;w=500&amp;auto=format&amp;fit=crop"/>
+<div class="absolute bottom-1 right-1 w-10 h-10 rounded-full bg-emerald-500 text-white flex items-center justify-center border-4 border-white">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</div>
+</div>
+<h2 class="mt-5 text-2xl font-black">
+                                Marcus Thorne
+                            </h2>
+<p class="text-blue-600 font-semibold mt-1">
+                                Senior Software Engineer
+                            </p>
+<div class="mt-6 w-full space-y-4">
+<div class="flex items-center gap-3 text-slate-600">
+<span class="material-symbols-outlined">mail</span>
+<span class="text-sm">m.thorne@example.com</span>
+</div>
+<div class="flex items-center gap-3 text-slate-600">
+<span class="material-symbols-outlined">call</span>
+<span class="text-sm">+1 (555) 012-3456</span>
+</div>
+<div class="flex items-center gap-3 text-slate-600">
+<span class="material-symbols-outlined">location_on</span>
+<span class="text-sm">San Francisco, CA</span>
+</div>
+</div>
+</div>
+<!-- Status -->
+<div class="mt-8 rounded-3xl bg-emerald-50 border border-emerald-200 p-5">
+<div class="flex gap-3">
+<div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">
+                                        task_alt
+                                    </span>
+</div>
+<div>
+<h3 class="font-bold text-emerald-800">
+                                        Ready to Finalize
+                                    </h3>
+<p class="text-sm text-emerald-700 mt-1">
+                                        All onboarding steps are validated successfully.
+                                    </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT CONTENT -->
+<div class="col-span-12 lg:col-span-8 space-y-8">
+<!-- Personal -->
+<div class="bg-white rounded-[32px] border border-slate-200 shadow-soft p-8">
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div>
+<h3 class="text-xl font-bold">
+                                        Personal Information
+                                    </h3>
+<p class="text-sm text-slate-500">
+                                        Employee identity and contact details
+                                    </p>
+</div>
+</div>
+<button class="text-blue-600 font-semibold flex items-center gap-1 hover:opacity-80">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+                                Edit
+                            </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<p class="text-xs uppercase tracking-wider text-slate-400 font-bold">
+                                    Full Name
+                                </p>
+<p class="font-semibold mt-2">Marcus Thorne</p>
+</div>
+<div>
+<p class="text-xs uppercase tracking-wider text-slate-400 font-bold">
+                                    Date of Birth
+                                </p>
+<p class="font-semibold mt-2">October 14, 1990</p>
+</div>
+<div>
+<p class="text-xs uppercase tracking-wider text-slate-400 font-bold">
+                                    Gender
+                                </p>
+<p class="font-semibold mt-2">Male</p>
+</div>
+<div>
+<p class="text-xs uppercase tracking-wider text-slate-400 font-bold">
+                                    Nationality
+                                </p>
+<p class="font-semibold mt-2">American</p>
+</div>
+<div class="md:col-span-2">
+<p class="text-xs uppercase tracking-wider text-slate-400 font-bold">
+                                    Address
+                                </p>
+<p class="font-semibold mt-2">
+                                    782 Mission St, San Francisco, California 94103
+                                </p>
+</div>
+</div>
+</div>
+<!-- Employment -->
+<div class="bg-white rounded-[32px] border border-slate-200 shadow-soft p-8">
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
+<span class="material-symbols-outlined">work</span>
+</div>
+<div>
+<h3 class="text-xl font-bold">
+                                        Employment Details
+                                    </h3>
+<p class="text-sm text-slate-500">
+                                        Department and organizational hierarchy
+                                    </p>
+</div>
+</div>
+<button class="text-blue-600 font-semibold flex items-center gap-1 hover:opacity-80">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+                                Edit
+                            </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<p class="text-xs uppercase tracking-wider text-slate-400 font-bold">
+                                    Department
+                                </p>
+<div class="mt-3">
+<span class="px-4 py-2 rounded-full bg-blue-50 text-blue-700 text-sm font-semibold">
+                                        Engineering
+                                    </span>
+</div>
+</div>
+<div>
+<p class="text-xs uppercase tracking-wider text-slate-400 font-bold">
+                                    Employment Type
+                                </p>
+<p class="font-semibold mt-2">Full-time Regular</p>
+</div>
+<div>
+<p class="text-xs uppercase tracking-wider text-slate-400 font-bold">
+                                    Reporting Manager
+                                </p>
+<div class="mt-3 flex items-center gap-3">
+<img alt="" class="w-10 h-10 rounded-full object-cover" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&amp;w=400&amp;auto=format&amp;fit=crop"/>
+<span class="font-semibold">
+                                        Elena Rodriguez
+                                    </span>
+</div>
+</div>
+<div>
+<p class="text-xs uppercase tracking-wider text-slate-400 font-bold">
+                                    Joining Date
+                                </p>
+<p class="font-semibold mt-2">September 1, 2024</p>
+</div>
+</div>
+</div>
+<!-- Payroll -->
+<div class="bg-white rounded-[32px] border border-slate-200 shadow-soft p-8">
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</div>
+<div>
+<h3 class="text-xl font-bold">
+                                        Payroll &amp; Banking
+                                    </h3>
+<p class="text-sm text-slate-500">
+                                        Salary, payment frequency and bank details
+                                    </p>
+</div>
+</div>
+<button class="text-blue-600 font-semibold flex items-center gap-1 hover:opacity-80">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+                                Edit
+                            </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div>
+<p class="text-xs uppercase tracking-wider text-slate-400 font-bold">
+                                    Annual Base Salary
+                                </p>
+<h2 class="text-4xl font-black text-blue-600 mt-2">
+                                    $165,000
+                                </h2>
+</div>
+<div>
+<p class="text-xs uppercase tracking-wider text-slate-400 font-bold">
+                                    Payment Frequency
+                                </p>
+<p class="font-semibold mt-3">
+                                    Bi-weekly
+                                </p>
+</div>
+<div class="md:col-span-2">
+<div class="rounded-3xl border border-slate-200 bg-slate-50 p-6 flex items-center justify-between flex-wrap gap-5">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-2xl bg-white border border-slate-200 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-600">
+                                                account_balance
+                                            </span>
+</div>
+<div>
+<p class="text-xs uppercase tracking-wider text-slate-400 font-bold">
+                                                Primary Bank Account
+                                            </p>
+<p class="font-semibold mt-1 tracking-wide">
+                                                CHASE BANK •••• •••• •••• 4902
+                                            </p>
+</div>
+</div>
+<span class="px-4 py-2 rounded-full bg-emerald-100 text-emerald-700 text-sm font-bold">
+                                        VERIFIED
+                                    </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- FOOTER ACTION -->
+<div class="max-w-6xl mx-auto mt-10 sticky bottom-0 z-40">
+<div class="glass border border-white/40 rounded-[32px] px-8 py-5 shadow-soft flex flex-col md:flex-row gap-5 items-center justify-between">
+<a class="flex items-center gap-2 px-6 py-3 rounded-2xl border border-slate-300 bg-white hover:bg-slate-50 transition font-semibold" href="add_employee_payroll_benefits/code.html">
+<span class="material-symbols-outlined">arrow_back</span>
+                        Back to Payroll
+                    </a>
+<div class="flex items-center gap-4">
+<button class="px-6 py-3 rounded-2xl font-semibold text-slate-600 hover:bg-white transition">
+                            Save as Draft
+                        </button>
+<button class="px-8 py-4 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-bold flex items-center gap-3 shadow-xl shadow-blue-600/20 transition active:scale-[0.98]" onclick="alert('🎉 Employee Marcus Thorne has been successfully onboarded!')">
+                            Complete Onboarding
+                            <span class="material-symbols-outlined">rocket_launch</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+    </main>
+
+</div>
+    <script src="../../../shared/js/utils.js"></script>
+
+    <script src="../../../shared/js/sidebar.js"></script>
+    <script src="page.js"></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+.topbar-right {
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-left:auto;
+}
+
+.top-icon-btn{
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:12px;
+    background:#f3f4f6;
+    cursor:pointer;
+}
+
+.top-icon-btn:hover{
+    background:#2563eb;
+    color:white;
+}
+
+.profile-wrapper{
+    position:relative;
+}
+
+.profile-btn{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    border:none;
+    background:#f9fafb;
+    padding:8px 14px;
+    border-radius:14px;
+    cursor:pointer;
+}
+
+.profile-btn img{
+    width:34px;
+    height:34px;
+    border-radius:50%;
+}
+
+.profile-menu{
+    position:absolute;
+    right:0;
+    top:58px;
+    width:220px;
+    background:white;
+    border-radius:16px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+    padding:10px;
+    display:none;
+    z-index:1000;
+}
+
+.profile-menu.show{
+    display:block;
+}
+
+.profile-menu a{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+    color:#111827;
+    padding:12px;
+    border-radius:10px;
+}
+
+.profile-menu a:hover{
+    background:#eff6ff;
+    color:#2563eb;
+}
+
+body.dark-mode{
+    background:#111827;
+    color:white;
+}
+
+body.dark-mode .bg-surface{
+    background:#0f172a;
+}
+
+body.dark-mode .text-slate-500,
+body.dark-mode .text-slate-400,
+body.dark-mode .text-slate-300{
+    color:#94a3b8 !important;
+}
+
+body.dark-mode .text-on-surface,
+body.dark-mode .text-slate-900,
+body.dark-mode .text-slate-800,
+body.dark-mode .text-slate-700,
+body.dark-mode .text-slate-600{
+    color:#e2e8f0 !important;
+}
+
+body.dark-mode .border-outline{
+    border-color:#334155 !important;
+}
+
+body.dark-mode input,
+body.dark-mode button,
+body.dark-mode .profile-btn,
+body.dark-mode .top-icon-btn{
+    background-color:#111827;
+    color:#e2e8f0;
+    border-color:#334155;
+}
+
+body.dark-mode input::placeholder{
+    color:#64748b;
+}
+
+body.dark-mode .profile-menu{
+    background:#0f172a;
+    border:1px solid #334155;
+}
+
+body.dark-mode .profile-menu{
+    background:#1f2937;
+}
+
+body.dark-mode .profile-menu a{
+    color:white;
+}
+
+body.dark-mode .modal-card{
+    background:#111827;
+    color:#e2e8f0;
+    border-color:#334155;
+}
+
+.header-dropdown{position:absolute;right:0;top:100%;z-index:9999;}

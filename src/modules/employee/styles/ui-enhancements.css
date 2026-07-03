@@ -1,0 +1,93 @@
+.ui-button,
+.btn,
+button:not(input),
+a.btn,
+.profile-dropdown-item,
+.tab-btn,
+.leave-type-btn,
+.header-icon-btn,
+.header-toggle-btn,
+.header-profile-avatar,
+.notification-dropdown-clear,
+.doc-download,
+.doc-delete,
+.course-continue,
+.portal-refresh {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.ui-ripple {
+  position: absolute;
+  border-radius: 9999px;
+  background: rgba(0, 74, 198, 0.18);
+  transform: scale(0);
+  animation: ui-ripple 550ms ease-out;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ui-ripple::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+@keyframes ui-ripple {
+  to {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+.ui-button > *,
+.btn > *,
+button:not(input) > *,
+a.btn > *,
+.profile-dropdown-item > *,
+.tab-btn > *,
+.leave-type-btn > *,
+.header-icon-btn > *,
+.header-toggle-btn > *,
+.header-profile-avatar > *,
+.notification-dropdown-clear > *,
+.doc-download > *,
+.doc-delete > *,
+.course-continue > *,
+.portal-refresh > * {
+  position: relative;
+  z-index: 1;
+}
+
+.is-pressed {
+  transform: translateY(1px) scale(0.99);
+}
+
+.ui-card {
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.ui-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.10);
+  border-color: rgba(0, 74, 198, 0.12);
+}
+
+.ui-card:active {
+  transform: translateY(-1px) scale(0.995);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-card,
+  .ui-card:hover,
+  .ui-card:active,
+  .is-pressed,
+  .ui-ripple {
+    transition: none;
+    animation: none;
+    transform: none;
+  }
+}

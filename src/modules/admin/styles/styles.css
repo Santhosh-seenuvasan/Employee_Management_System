@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+}
+
+/* Logout button styles */
+.sidebar-nav-item a.logout-btn,
+.logout-btn {
+    color: var(--ems-text-secondary);
+}
+.sidebar-nav-item a.logout-btn:hover,
+.logout-btn:hover {
+    color: var(--ems-danger);
+    background: #fee2e2; /* Light red */
+}

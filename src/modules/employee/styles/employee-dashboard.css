@@ -1,0 +1,32 @@
+* {
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: #f8fafc;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24;
+        }
+
+        .glass {
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(16px);
+        }
+
+        .progress-bar {
+            height: 8px;
+            border-radius: 9999px;
+            overflow: hidden;
+            background: #e2e8f0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: inherit;
+        }

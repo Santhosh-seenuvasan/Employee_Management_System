@@ -1,0 +1,198 @@
+:root {
+  --portal-bg: linear-gradient(180deg, #f8fbff 0%, #eef4ff 100%);
+  --portal-card: rgba(255, 255, 255, 0.82);
+  --portal-border: rgba(148, 163, 184, 0.2);
+  --portal-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+  --portal-accent: #2563eb;
+  --portal-accent-soft: #dbeafe;
+  --portal-good: #059669;
+  --portal-warn: #d97706;
+  --portal-muted: #64748b;
+}
+
+body.portal-page {
+  background: var(--portal-bg);
+}
+
+body.dark-mode.portal-page,
+html.dark body.portal-page {
+  --portal-bg: linear-gradient(180deg, #0f172a 0%, #111827 100%);
+  --portal-card: rgba(15, 23, 42, 0.82);
+  --portal-border: rgba(148, 163, 184, 0.18);
+  --portal-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+.portal-card {
+  background: var(--portal-card);
+  border: 1px solid var(--portal-border);
+  box-shadow: var(--portal-shadow);
+  backdrop-filter: blur(18px);
+}
+
+.portal-muted {
+  color: var(--portal-muted);
+}
+
+.portal-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.portal-pill.blue {
+  background: var(--portal-accent-soft);
+  color: var(--portal-accent);
+}
+
+.portal-pill.green {
+  background: #dcfce7;
+  color: var(--portal-good);
+}
+
+.portal-pill.amber {
+  background: #fef3c7;
+  color: var(--portal-warn);
+}
+
+.portal-stat {
+  border-radius: 1.5rem;
+  padding: 1.1rem 1.2rem;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.portal-tab-button {
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 999px;
+  padding: 0.65rem 1rem;
+  font-weight: 700;
+  color: #475569;
+  background: rgba(255, 255, 255, 0.74);
+}
+
+.portal-tab-button.active {
+  color: white;
+  background: var(--portal-accent);
+  border-color: var(--portal-accent);
+}
+
+.portal-message,
+.portal-feed-item {
+  border-radius: 1.4rem;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: rgba(255, 255, 255, 0.74);
+  padding: 1rem 1.1rem;
+}
+
+.portal-message.sent {
+  border-left: 4px solid #7c3aed;
+}
+
+.portal-message.received {
+  border-left: 4px solid #2563eb;
+}
+
+.portal-feed-item.announcement {
+  border-left: 4px solid #2563eb;
+}
+
+.portal-feed-item.event {
+  border-left: 4px solid #059669;
+}
+
+.portal-feed-item.feedback {
+  border-left: 4px solid #d97706;
+}
+
+.portal-form-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.portal-field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.portal-field label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #334155;
+}
+
+.portal-field input,
+.portal-field select,
+.portal-field textarea {
+  width: 100%;
+  border-radius: 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: rgba(255, 255, 255, 0.8);
+  padding: 0.9rem 1rem;
+  color: #0f172a;
+  outline: none;
+}
+
+.portal-field textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.portal-field input:focus,
+.portal-field select:focus,
+.portal-field textarea:focus {
+  border-color: var(--portal-accent);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+.portal-empty {
+  border-radius: 1.4rem;
+  border: 1px dashed rgba(148, 163, 184, 0.3);
+  background: rgba(255, 255, 255, 0.55);
+  padding: 1.25rem;
+  color: #64748b;
+}
+
+.portal-section-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.portal-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border-radius: 999px;
+  padding: 0.45rem 0.8rem;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  color: #475569;
+  font-weight: 700;
+}
+
+.portal-form-grid button[type="submit"] {
+  background: var(--portal-accent);
+  color: white;
+  border: none;
+  padding: 0.9rem 1.5rem;
+  border-radius: 1rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.portal-form-grid button[type="submit"]:hover {
+  background: #1d4ed8;
+}
+
+.portal-form-grid button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
